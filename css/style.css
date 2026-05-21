@@ -125,12 +125,8 @@ a {
 .product-image {
   position: relative;
   aspect-ratio: 3/4;
-  background: #f5f5f5;
+  background: #ffffff;
   overflow: hidden;
-  display: block;
-  width: 100%;
-  height: auto;
-  min-height: 0;
 }
 
 .product-image img {
