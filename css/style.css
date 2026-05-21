@@ -676,8 +676,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
-  border-bottom: 1px solid #e8e8e8;
+  padding: 14px 0;
   font-size: 11px;
   letter-spacing: 0.1em;
   color: #1a1a1a;
@@ -686,6 +685,12 @@ a {
 
 .social-row:hover {
   opacity: 0.5;
+}
+
+.social-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .social-platform {
