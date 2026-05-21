@@ -519,7 +519,3 @@ a {
   letter-spacing: 0.15em;
   color: #888888;
 }
-
-.collab-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
