@@ -477,3 +477,45 @@ a {
   font-size: 10px;
   color: #888888;
 }
+
+/* COLLABS PAGE */
+.collabs-banner {
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 20px 16px;
+}
+
+.collabs-banner-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.collabs-banner-sub {
+  font-size: 10px;
+  color: #888888;
+  margin-top: 4px;
+  letter-spacing: 0.15em;
+}
+
+.collab-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  padding: 3px 6px;
+  font-family: inherit;
+  z-index: 1;
+}
+
+.collab-divider {
+  grid-column: 1 / -1;
+  background: #f5f5f5;
+  padding: 12px 16px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: #888888;
+}
