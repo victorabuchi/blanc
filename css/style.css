@@ -534,14 +534,18 @@ a {
 
 .archive-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  background: #e8e8e8;
+  padding: 8px;
 }
 
 .archive-entry {
-  display: block;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   color: var(--text);
+  background: #ffffff;
 }
 
 .archive-image {
@@ -561,7 +565,8 @@ a {
   font-size: 10px;
   color: #888888;
   letter-spacing: 0.1em;
-  padding: 8px 0 2px 0;
+  padding: 8px 8px 2px 8px;
+  background: #f5f5f5;
 }
 
 .archive-name {
@@ -569,4 +574,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #1a1a1a;
+  padding: 0 8px 12px 8px;
+  background: #f5f5f5;
+  flex: 1;
 }
