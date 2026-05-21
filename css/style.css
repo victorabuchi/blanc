@@ -429,3 +429,48 @@ a {
   color: #888888;
   margin-top: 6px;
 }
+
+/* COMBOS PAGE */
+.combos-heading {
+  padding: 24px 16px 0 16px;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 16px;
+  margin-bottom: 0;
+}
+
+.combos-heading-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #1a1a1a;
+}
+
+.combo-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  padding: 3px 6px;
+  font-family: inherit;
+  z-index: 1;
+}
+
+.combos-footer {
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.combos-footer-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+.combos-footer-sub {
+  font-size: 10px;
+  color: #888888;
+}
