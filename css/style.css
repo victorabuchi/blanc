@@ -370,3 +370,61 @@ a {
   text-align: center;
   color: #888888;
 }
+
+/* NEW PAGE */
+.drop-banner {
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 14px 16px;
+}
+
+.drop-banner-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.drop-banner-sub {
+  font-size: 10px;
+  color: #888888;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+.new-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  padding: 3px 6px;
+  font-family: inherit;
+  z-index: 1;
+}
+
+.drop-counter {
+  background: #ffffff;
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.drop-counter-label {
+  font-size: 10px;
+  color: #888888;
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+.drop-counter-count {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.drop-counter-sub {
+  font-size: 10px;
+  color: #888888;
+  margin-top: 6px;
+}
