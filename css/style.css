@@ -102,6 +102,7 @@ a {
   margin-left: 160px;
   padding: 0;
   padding-top: 80px;
+  width: calc(100% - 160px);
 }
 
 /* PRODUCT GRID */
@@ -111,7 +112,6 @@ a {
   gap: 8px;
   background: #e8e8e8;
   padding: 8px;
-  padding-top: 0;
 }
 
 .product-card {
