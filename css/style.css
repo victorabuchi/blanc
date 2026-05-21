@@ -83,6 +83,10 @@ a {
   font-size: 14px;
 }
 
+.sidebar-cart-link svg {
+  display: block;
+}
+
 .sidebar-footer {
   margin-top: auto;
   padding-top: 24px;
@@ -96,13 +100,15 @@ a {
   flex: 1;
   padding: 0;
   margin-top: 0;
+  padding-top: 8px;
 }
 
 /* PRODUCT GRID */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 0;
+  row-gap: 8px;
+  column-gap: 0;
 }
 
 .product-card {
@@ -143,7 +149,7 @@ a {
 
 .product-info {
   padding: 12px 10px;
-  background: #ffffff;
+  background: #ebebeb;
 }
 
 .product-name {
