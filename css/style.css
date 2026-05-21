@@ -77,6 +77,18 @@ a {
   opacity: 0.5;
 }
 
+.sidebar-cart {
+  margin-top: 24px;
+}
+
+.sidebar-cart-link {
+  display: block;
+  width: fit-content;
+}
+
+.sidebar-cart-link svg {
+  display: block;
+}
 
 .sidebar-footer {
   margin-top: auto;
@@ -88,16 +100,18 @@ a {
 /* MAIN */
 .main {
   margin-left: 160px;
-  flex: 1;
   padding: 0;
+  padding-top: 80px;
 }
 
 /* PRODUCT GRID */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 3px;
-  background: #e0e0e0;
+  gap: 8px;
+  background: #e8e8e8;
+  padding: 8px;
+  padding-top: 0;
 }
 
 .product-card {
