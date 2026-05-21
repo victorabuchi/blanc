@@ -107,15 +107,15 @@ a {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  row-gap: 8px;
-  column-gap: 0;
+  row-gap: 4px;
+  column-gap: 4px;
 }
 
 .product-card {
   display: block;
   text-decoration: none;
   color: var(--text);
-  border: 1px solid #e8e8e8;
+  background: #ffffff;
 }
 
 .product-image {
@@ -148,20 +148,24 @@ a {
 }
 
 .product-info {
-  padding: 12px 10px;
-  background: #ebebeb;
+  padding: 10px 10px 14px 10px;
+  background: #ffffff;
 }
 
 .product-name {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   margin-bottom: 4px;
   line-height: 1.4;
+  color: #1a1a1a;
+  text-align: center;
 }
 
 .product-price {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.03em;
   margin-top: 2px;
+  color: #1a1a1a;
+  text-align: center;
 }
