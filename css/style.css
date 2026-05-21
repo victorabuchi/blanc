@@ -710,3 +710,84 @@ a {
   color: #888888;
   letter-spacing: 0.05em;
 }
+
+/* MAILING PAGE */
+.mailing-wrap {
+  max-width: 480px;
+  padding: 80px 40px;
+  margin: 0 auto;
+}
+
+.mailing-heading {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.mailing-sub {
+  font-size: 11px;
+  color: #888888;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.mailing-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.mailing-input {
+  width: 100%;
+  padding: 14px 12px;
+  border: 1px solid #1a1a1a;
+  font-family: inherit;
+  font-size: 11px;
+  background: #ffffff;
+  color: #1a1a1a;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  outline: none;
+}
+
+.mailing-input::placeholder {
+  color: #aaaaaa;
+}
+
+.mailing-btn {
+  width: 100%;
+  padding: 14px;
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.15s, color 0.15s;
+}
+
+.mailing-btn:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+.mailing-confirm {
+  display: none;
+  margin-top: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #1a1a1a;
+}
+
+.mailing-fine {
+  margin-top: 16px;
+  font-size: 10px;
+  color: #888888;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}

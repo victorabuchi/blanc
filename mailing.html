@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAILING LIST — FROZENHOLM</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-logo">
+        <a href="/">FROZENHOLM</a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="new.html">NEW</a></li>
+          <li><a href="combos.html">COMBOS +</a></li>
+          <li><a href="collabs.html">COLLABS +</a></li>
+          <li><a href="archive.html">ARCHIVE</a></li>
+          <li><a href="support.html">SUPPORT</a></li>
+          <li><a href="social.html">SOCIAL +</a></li>
+          <li><a href="mailing.html">MAILING LIST</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-cart">
+        <a href="#" class="sidebar-cart-link">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1h2.5l1.6 8h9.4l1.5-5.5H4.5"
+            stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"
+            stroke-linejoin="round"/>
+            <circle cx="7.5" cy="15" r="1" fill="#1a1a1a"/>
+            <circle cx="13.5" cy="15" r="1" fill="#1a1a1a"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <span>&#9658; Finland (EUR)</span>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <div class="mailing-wrap">
+
+        <h1 class="mailing-heading">JOIN FROZENHOLM</h1>
+        <p class="mailing-sub">Subscribe to the Frozenholm mailing list and never miss a drop.</p>
+
+        <form class="mailing-form" id="mailingForm" novalidate>
+          <input
+            type="email"
+            id="mailingEmail"
+            class="mailing-input"
+            placeholder="Enter your email"
+            autocomplete="email"
+          >
+          <button type="submit" class="mailing-btn">SUBSCRIBE</button>
+          <p class="mailing-confirm" id="mailingConfirm">YOU ARE IN.</p>
+          <p class="mailing-fine">By subscribing you agree to receive email updates from Frozenholm. Unsubscribe at any time.</p>
+        </form>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    const form = document.getElementById('mailingForm');
+    const input = document.getElementById('mailingEmail');
+    const confirm = document.getElementById('mailingConfirm');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const val = input.value.trim();
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+
+      if (!valid) {
+        input.style.borderColor = '#cc0000';
+        confirm.style.display = 'none';
+        input.focus();
+        return;
+      }
+
+      input.style.borderColor = '#1a1a1a';
+      confirm.style.display = 'block';
+    });
+
+    input.addEventListener('input', function () {
+      input.style.borderColor = '#1a1a1a';
+    });
+  </script>
+
+</body>
+</html>
