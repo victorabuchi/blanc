@@ -77,27 +77,6 @@ a {
   opacity: 0.5;
 }
 
-.sidebar-cart {
-  margin-top: 24px;
-}
-
-.sidebar-cart-link {
-  display: block;
-  width: fit-content;
-}
-
-.sidebar-cart-link svg {
-  display: block;
-}
-
-.sidebar-cart-link svg path {
-  fill: #cccccc;
-  transition: fill 0.15s ease;
-}
-
-.sidebar-cart-link.has-items svg path {
-  fill: var(--text);
-}
 
 .sidebar-footer {
   margin-top: auto;
