@@ -549,9 +549,10 @@ a {
 }
 
 .archive-image {
-  aspect-ratio: 1 / 1;
-  background: #e8e8e8;
+  aspect-ratio: 3 / 4;
+  background: #f8f8f8;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .archive-image img {
