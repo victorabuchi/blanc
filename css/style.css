@@ -53,46 +53,36 @@ button {
 }
 
 .header-inner {
+  position: relative;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 28px;
 }
 
-.menu-toggle {
+.header-nav-left {
   display: flex;
   align-items: center;
-  gap: 9px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text);
-  justify-self: start;
+  gap: 22px;
 }
 
-.menu-toggle-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: 18px;
-}
-
-.menu-toggle-bars span {
-  display: block;
-  height: 1px;
-  width: 100%;
-  background: var(--text);
-}
-
-.menu-toggle-label {
+.header-nav-left a {
   font-size: 11px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--text);
+}
+
+.header-nav-left a:hover {
+  opacity: 0.5;
 }
 
 .header-logo {
-  justify-self: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -104,7 +94,6 @@ button {
   display: flex;
   align-items: center;
   gap: 22px;
-  justify-self: end;
 }
 
 .header-action {
@@ -119,131 +108,6 @@ button {
 
 .header-action:hover {
   opacity: 0.5;
-}
-
-.header-region {
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  display: none;
-}
-
-@media (min-width: 900px) {
-  .header-region {
-    display: inline;
-  }
-}
-
-/* ============ NAV OVERLAY ============ */
-.nav-overlay {
-  position: fixed;
-  inset: 0;
-  background: var(--bg);
-  z-index: 2000;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px);
-  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s;
-  display: flex;
-  flex-direction: column;
-}
-
-body.nav-open .nav-overlay {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-body.nav-open {
-  overflow: hidden;
-}
-
-.nav-overlay-bar {
-  height: var(--header-h);
-  border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  padding: 0 28px;
-  flex-shrink: 0;
-}
-
-.nav-close {
-  justify-self: start;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 22px;
-  line-height: 1;
-  color: var(--text);
-  padding: 0;
-}
-
-.nav-overlay-logo {
-  justify-self: center;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-}
-
-.nav-overlay-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 40px 28px;
-  max-width: 640px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.overlay-nav-primary li {
-  border-bottom: 1px solid var(--border);
-}
-
-.overlay-nav-primary li:first-child {
-  border-top: 1px solid var(--border);
-}
-
-.overlay-nav-primary a {
-  display: block;
-  padding: 20px 4px;
-  font-size: clamp(24px, 5vw, 34px);
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.overlay-nav-primary a:hover {
-  opacity: 0.5;
-}
-
-.overlay-nav-secondary {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 28px;
-  margin-top: 28px;
-}
-
-.overlay-nav-secondary a {
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 6px 0;
-}
-
-.overlay-nav-secondary a:hover {
-  color: var(--text);
-}
-
-.nav-overlay-footer {
-  border-top: 1px solid var(--border);
-  padding: 18px 28px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  flex-shrink: 0;
 }
 
 /* ============ MAIN ============ */
@@ -1140,7 +1004,7 @@ body.nav-open {
     padding: 0 16px;
   }
 
-  .menu-toggle-label {
+  .header-nav-left {
     display: none;
   }
 
