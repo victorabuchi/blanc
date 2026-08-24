@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {{ page_title }}{% if page_title != shop.name %} &mdash; {{ shop.name }}{% endif %}
+  </title>
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
+
+  {{ content_for_header }}
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <nav class="site-header__nav-left">
+        <a href="/collections/new">New</a>
+        <a href="/collections/combos">Combos</a>
+        <a href="/collections/collabs">Collabs</a>
+        <a href="/collections/archive">Archive</a>
+      </nav>
+
+      <a href="{{ routes.root_url }}" class="site-header__logo">{{ shop.name | upcase }}</a>
+
+      <div class="site-header__nav-right">
+        <a href="/pages/help" class="site-header__action">Help</a>
+        <a href="{{ routes.account_url }}" class="site-header__action">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Account</span>
+        </a>
+        <a href="{{ routes.search_url }}" class="site-header__action">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Search</span>
+        </a>
+        <a href="{{ routes.cart_url }}" class="site-header__action">
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1h2.5l1.6 8h9.4l1.5-5.5H4.5" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="7.5" cy="15" r="1" fill="#1a1a1a"/>
+            <circle cx="13.5" cy="15" r="1" fill="#1a1a1a"/>
+          </svg>
+          <span>Bag ({{ cart.item_count }})</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    {{ content_for_layout }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        {{ shop.name | upcase }} &mdash; EST. 2025 HELSINKI
+      </div>
+
+      <div class="site-footer__mailing">
+        <p class="site-footer__mailing-title">Mailing List</p>
+        {% form 'customer', id: 'footer-newsletter-form' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="site-footer__mailing-form">
+            <input
+              type="email"
+              name="contact[email]"
+              class="site-footer__mailing-input"
+              placeholder="Email address"
+              required
+            >
+            <button type="submit" class="site-footer__mailing-submit">Subscribe</button>
+          </div>
+        {% endform %}
+      </div>
+
+      <div class="site-footer__social">
+        <a href="{{ settings.social_instagram_link | default: 'https://instagram.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="{{ settings.social_tiktok_link | default: 'https://tiktok.com/@frozenholm' }}" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="{{ settings.social_x_link | default: 'https://x.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">X</a>
+      </div>
+    </div>
+  </footer>
+
+  {{ 'theme.js' | asset_url | script_tag }}
+</body>
+</html>

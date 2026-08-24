@@ -1,0 +1,30 @@
+{%- comment -%}
+  Accepts: product
+{%- endcomment -%}
+<a href="{{ product.url }}" class="product-card">
+  <div class="product-card__image">
+    {%- if product.featured_image -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 800 }}"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
+        loading="lazy"
+        width="800"
+        height="{{ 800 | divided_by: product.featured_image.aspect_ratio }}"
+      >
+    {%- endif -%}
+
+    {%- if product.metafields.custom.piece_number -%}
+      <span class="product-card__badge">
+        {{ product.metafields.custom.piece_number }} / {{ product.metafields.custom.total_pieces | default: settings.pieces_per_drop | default: '099' }}
+      </span>
+    {%- endif -%}
+
+    {%- unless product.available -%}
+      <div class="product-card__sold-out">SOLD<br>OUT</div>
+    {%- endunless -%}
+  </div>
+  <div class="product-card__info">
+    <p class="product-card__name">{{ product.title }}</p>
+    <p class="product-card__price">{{ product.price | money }}</p>
+  </div>
+</a>

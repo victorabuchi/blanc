@@ -1,0 +1,83 @@
+<section class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">{{ section.settings.eyebrow }}</p>
+    <h1 class="hero__title">{{ section.settings.headline }}</h1>
+    <a href="{{ section.settings.hero_link }}" class="hero__link">{{ section.settings.hero_link_label }}</a>
+  </div>
+</section>
+
+<div class="section-heading">
+  <p class="section-heading__title">{{ section.settings.grid_title }}</p>
+</div>
+
+<div class="product-grid">
+  {%- for product in collections[section.settings.collection].products limit: section.settings.products_to_show -%}
+    {%- render 'product-card', product: product -%}
+  {%- else -%}
+    {%- for i in (1..8) -%}
+      <div class="product-card">
+        <div class="product-card__image"></div>
+        <div class="product-card__info">
+          <p class="product-card__name">Product title</p>
+          <p class="product-card__price">&euro;0</p>
+        </div>
+      </div>
+    {%- endfor -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Home",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "WINTER DROP 001"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "GREATNESS DOESN'T WAIT FOR GOOD CONDITIONS."
+    },
+    {
+      "type": "url",
+      "id": "hero_link",
+      "label": "Hero link"
+    },
+    {
+      "type": "text",
+      "id": "hero_link_label",
+      "label": "Hero link label",
+      "default": "SHOP THE DROP"
+    },
+    {
+      "type": "text",
+      "id": "grid_title",
+      "label": "Grid title",
+      "default": "FEATURED"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Featured collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home"
+    }
+  ]
+}
+{% endschema %}

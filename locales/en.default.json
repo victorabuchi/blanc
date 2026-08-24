@@ -1,0 +1,40 @@
+{
+  "general": {
+    "search": {
+      "search": "Search"
+    },
+    "cart": {
+      "title": "Bag",
+      "empty": "Your bag is empty",
+      "item_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    },
+    "newsletter": {
+      "email_placeholder": "Email address",
+      "subscribe": "Subscribe",
+      "confirmation": "Thanks for subscribing"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_bag": "Add to bag",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "piece_number": "Piece number",
+      "size": "Size",
+      "description": "Description",
+      "quantity": "Quantity"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_matches": "No products found in this collection"
+    }
+  },
+  "404": {
+    "title": "Page not found",
+    "subtext": "The page you're looking for doesn't exist."
+  }
+}
