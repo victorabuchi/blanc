@@ -1,0 +1,106 @@
+<div class="page-banner">
+  <p class="page-banner__title">{{ section.settings.title }}</p>
+</div>
+
+<div class="page">
+
+  <div class="support-section">
+    <p class="support-section-title">{{ section.settings.shipping_title }}</p>
+    <ul class="support-list">
+      {%- for line in section.settings.shipping_list | newline_to_br | split: '<br />' -%}
+        {%- if line != blank -%}
+          <li>{{ line | strip }}</li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+
+  <hr class="support-divider">
+
+  <div class="support-section">
+    <p class="support-section-title">{{ section.settings.returns_title }}</p>
+    <div class="support-body">{{ section.settings.returns_text }}</div>
+  </div>
+
+  <hr class="support-divider">
+
+  <div class="support-section">
+    <p class="support-section-title">{{ section.settings.refunds_title }}</p>
+    <div class="support-body">{{ section.settings.refunds_text }}</div>
+  </div>
+
+  <hr class="support-divider">
+
+  <div class="support-section">
+    <p class="support-section-title">{{ section.settings.contact_title }}</p>
+    <div class="support-body">{{ section.settings.contact_text }}</div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Support",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "SUPPORT"
+    },
+    {
+      "type": "text",
+      "id": "shipping_title",
+      "label": "Shipping section title",
+      "default": "SHIPPING"
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_list",
+      "label": "Shipping bullet points (one per line)",
+      "default": "FINLAND AND EU ORDERS SHIP WITHIN 5-10 WORKING DAYS\nINTERNATIONAL ORDERS 7-15 WORKING DAYS\nUNLESS A PRE-ORDER SHIP DATE IS GIVEN\nIT IS THE CUSTOMER'S RESPONSIBILITY TO PAY IMPORT TAXES\nREGULATIONS FOR IMPORT DUTIES AND TAXES MAY VARY AND WE ARE UNABLE TO CONTROL NOR PREDICT THEIR AMOUNT\nIF YOU REFUSE A SHIPMENT FROM US, YOU ARE RESPONSIBLE FOR THE ORIGINAL SHIPPING CHARGES AND THE COURIER COST\nINTERNATIONAL SHIPMENTS MAY TAKE LONGER DUE TO CUSTOMS PROCESSING IN YOUR COUNTRY"
+    },
+    {
+      "type": "text",
+      "id": "returns_title",
+      "label": "Returns section title",
+      "default": "RETURNS"
+    },
+    {
+      "type": "richtext",
+      "id": "returns_text",
+      "label": "Returns text",
+      "default": "<p>We have a 14-day return policy. You have 14 days after receiving your item to request a return. You are responsible for any payments due to return or exchange the product.</p><p>To be eligible for a return, your item must be in the same condition that you received it, unworn and unused, with tags attached, and in its original packaging. Proof of purchase is required.</p><p>Frozenholm is not responsible for your returns until they arrive at our warehouse. Any lost returns will not be refunded. Proof of delivery must be provided on all return shipments.</p><p>To complete a return, email us at support@frozenholm.com with your order number and reason for return. We will respond within 2 working days with return instructions.</p>"
+    },
+    {
+      "type": "text",
+      "id": "refunds_title",
+      "label": "Refunds section title",
+      "default": "REFUNDS"
+    },
+    {
+      "type": "richtext",
+      "id": "refunds_text",
+      "label": "Refunds text",
+      "default": "<p>We will notify you once we have received and inspected your return and let you know if the refund was approved. If approved, you will be automatically refunded to your original payment method within 5-10 working days.</p><p>Please note that it may take additional time for your bank or card provider to process and post the refund.</p>"
+    },
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Contact section title",
+      "default": "CONTACT"
+    },
+    {
+      "type": "richtext",
+      "id": "contact_text",
+      "label": "Contact text",
+      "default": "<p>For all support enquiries email us at support@frozenholm.com</p><p>We aim to respond to all emails within 2 working days.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Support"
+    }
+  ]
+}
+{% endschema %}

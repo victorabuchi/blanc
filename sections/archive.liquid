@@ -1,0 +1,87 @@
+<div class="page-banner">
+  <p class="page-banner__title">{{ section.settings.title }}</p>
+</div>
+
+<div class="archive-grid">
+  {%- for block in section.blocks -%}
+    <a href="{{ block.settings.link | default: '#' }}" class="archive-entry" {{ block.shopify_attributes }}>
+      <div class="archive-entry__image">
+        {%- if block.settings.image -%}
+          <img
+            src="{{ block.settings.image | image_url: width: 800 }}"
+            alt="{{ block.settings.name | escape }}"
+            loading="lazy"
+            width="800"
+            height="{{ 800 | divided_by: block.settings.image.aspect_ratio }}"
+          >
+        {%- endif -%}
+      </div>
+      <p class="archive-entry__date">{{ block.settings.date }}</p>
+      <p class="archive-entry__name">{{ block.settings.name }}</p>
+    </a>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Archive",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "ARCHIVE"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "entry",
+      "name": "Archive entry",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "15.11.24"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Drop name",
+          "default": "DROP 000 — AUTUMN 2024"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 24,
+  "presets": [
+    {
+      "name": "Archive",
+      "blocks": [
+        { "type": "entry", "settings": { "date": "15.11.24", "name": "DROP 000 — AUTUMN 2024" } },
+        { "type": "entry", "settings": { "date": "15.11.24", "name": "FH X NORTH" } },
+        { "type": "entry", "settings": { "date": "15.11.24", "name": "HELSINKI STREETS" } },
+        { "type": "entry", "settings": { "date": "01.09.24", "name": "DROP 00X — SUMMER 2024" } },
+        { "type": "entry", "settings": { "date": "01.09.24", "name": "FH X ICE" } },
+        { "type": "entry", "settings": { "date": "01.09.24", "name": "COLD CITY CAMPAIGN" } },
+        { "type": "entry", "settings": { "date": "14.06.24", "name": "PROTO DROP" } },
+        { "type": "entry", "settings": { "date": "14.06.24", "name": "FH X ARCTIC" } },
+        { "type": "entry", "settings": { "date": "14.06.24", "name": "FROZEN SERIES" } },
+        { "type": "entry", "settings": { "date": "01.03.24", "name": "ORIGIN DROP" } },
+        { "type": "entry", "settings": { "date": "01.03.24", "name": "FIRST EVER COLLAB" } },
+        { "type": "entry", "settings": { "date": "01.03.24", "name": "WHERE IT STARTED" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

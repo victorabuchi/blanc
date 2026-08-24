@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "main": {
+      "type": "archive"
+    }
+  },
+  "order": ["main"]
+}

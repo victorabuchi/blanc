@@ -87,6 +87,11 @@
         "type": "url",
         "id": "social_x_link",
         "label": "X"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube_link",
+        "label": "YouTube"
       }
     ]
   }

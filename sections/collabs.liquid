@@ -1,0 +1,79 @@
+<div class="page-banner">
+  <p class="page-banner__title">{{ section.settings.title }}</p>
+  {%- if section.settings.subtitle != blank -%}
+    <p class="page-banner__subtitle">{{ section.settings.subtitle }}</p>
+  {%- endif -%}
+</div>
+
+<div class="product-grid">
+  {%- for block in section.blocks -%}
+    <div class="collab-divider" {{ block.shopify_attributes }}>{{ block.settings.label }}</div>
+    {%- for product in collections[block.settings.collection].products -%}
+      {%- render 'product-card', product: product -%}
+    {%- endfor -%}
+  {%- else -%}
+    <div class="collab-divider">FH X COLLAB COLLECTION</div>
+    {%- for i in (1..4) -%}
+      <div class="product-card">
+        <div class="product-card__image"></div>
+        <div class="product-card__info">
+          <p class="product-card__name">Product title</p>
+          <p class="product-card__price">&euro;0</p>
+        </div>
+      </div>
+    {%- endfor -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "COLLABS"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "FROZENHOLM X THE WORLD"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "group",
+      "name": "Collab group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Group label",
+          "default": "FH X COLLAB COLLECTION"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Collabs",
+      "blocks": [
+        {
+          "type": "group",
+          "settings": {
+            "label": "FH X NORTH COLLECTION"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
