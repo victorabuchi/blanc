@@ -35,6 +35,54 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  var searchToggles = document.querySelectorAll('.site-header__search-toggle');
+  var searchOverlay = document.getElementById('search-overlay');
+  var searchBackdrop = document.getElementById('search-overlay-backdrop');
+  var searchClose = document.querySelector('.search-overlay__close');
+  var searchInput = document.querySelector('.search-overlay__input');
+
+  function openSearch() {
+    searchOverlay.classList.add('is-open');
+    searchOverlay.setAttribute('aria-hidden', 'false');
+    searchBackdrop.hidden = false;
+    requestAnimationFrame(function () {
+      searchBackdrop.classList.add('is-visible');
+    });
+    searchToggles.forEach(function (btn) {
+      btn.setAttribute('aria-expanded', 'true');
+    });
+    document.body.style.overflow = 'hidden';
+    if (searchInput) {
+      searchInput.focus();
+    }
+  }
+
+  function closeSearch() {
+    searchOverlay.classList.remove('is-open');
+    searchOverlay.setAttribute('aria-hidden', 'true');
+    searchBackdrop.classList.remove('is-visible');
+    searchToggles.forEach(function (btn) {
+      btn.setAttribute('aria-expanded', 'false');
+    });
+    document.body.style.overflow = '';
+    setTimeout(function () {
+      searchBackdrop.hidden = true;
+    }, 250);
+  }
+
+  if (searchToggles.length && searchOverlay && searchBackdrop) {
+    searchToggles.forEach(function (btn) {
+      btn.addEventListener('click', openSearch);
+    });
+    searchClose.addEventListener('click', closeSearch);
+    searchBackdrop.addEventListener('click', closeSearch);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && searchOverlay.classList.contains('is-open')) {
+        closeSearch();
+      }
+    });
+  }
+
   document.querySelectorAll('.product__sizes').forEach(function (group) {
     group.querySelectorAll('.size-btn:not(.is-sold-out)').forEach(function (btn) {
       btn.addEventListener('click', function () {
