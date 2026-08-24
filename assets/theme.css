@@ -108,13 +108,13 @@ h1, h2, h3, h4 {
 
 .site-header__logo {
   display: block;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: #000000;
   white-space: nowrap;
+}
+
+.site-header__logo-img {
+  display: block;
+  height: 20px;
+  width: auto;
 }
 
 .site-header__icons {
