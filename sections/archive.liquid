@@ -2,6 +2,12 @@
   <p class="page-banner__title">{{ section.settings.title }}</p>
 </div>
 
+{%- if section.settings.brand_story != blank -%}
+  <div class="archive-story">
+    {{ section.settings.brand_story }}
+  </div>
+{%- endif -%}
+
 <div class="archive-grid">
   {%- for block in section.blocks -%}
     <a href="{{ block.settings.link | default: '#' }}" class="archive-entry" {{ block.shopify_attributes }}>
@@ -31,6 +37,12 @@
       "id": "title",
       "label": "Title",
       "default": "ARCHIVE"
+    },
+    {
+      "type": "richtext",
+      "id": "brand_story",
+      "label": "Brand story",
+      "default": "<p>Frozenholm began as a small drop of pieces made for a cold city — every collection since has carried that same idea forward.</p>"
     }
   ],
   "blocks": [

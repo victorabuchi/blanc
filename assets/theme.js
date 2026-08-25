@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     menuToggle.addEventListener('click', openDrawer);
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
-    drawer.querySelectorAll('a').forEach(function (link) {
+    drawer.querySelectorAll('a, button:not(.help-overlay-toggle)').forEach(function (link) {
       link.addEventListener('click', closeDrawer);
     });
   }
@@ -82,6 +82,70 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  var helpToggles = document.querySelectorAll('.help-overlay-toggle');
+  var helpOverlay = document.getElementById('help-overlay');
+  var helpBackdrop = document.getElementById('help-overlay-backdrop');
+  var helpClose = document.querySelector('.help-overlay__close');
+
+  function openHelp() {
+    if (drawer && drawer.classList.contains('is-open')) {
+      closeDrawer();
+    }
+    if (searchOverlay && searchOverlay.classList.contains('is-open')) {
+      closeSearch();
+    }
+    helpOverlay.classList.add('is-open');
+    helpOverlay.setAttribute('aria-hidden', 'false');
+    helpBackdrop.hidden = false;
+    requestAnimationFrame(function () {
+      helpBackdrop.classList.add('is-visible');
+    });
+    helpToggles.forEach(function (btn) {
+      btn.setAttribute('aria-expanded', 'true');
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeHelp() {
+    helpOverlay.classList.remove('is-open');
+    helpOverlay.setAttribute('aria-hidden', 'true');
+    helpBackdrop.classList.remove('is-visible');
+    helpToggles.forEach(function (btn) {
+      btn.setAttribute('aria-expanded', 'false');
+    });
+    document.body.style.overflow = '';
+    setTimeout(function () {
+      helpBackdrop.hidden = true;
+    }, 250);
+  }
+
+  if (helpToggles.length && helpOverlay && helpBackdrop) {
+    helpToggles.forEach(function (btn) {
+      btn.addEventListener('click', openHelp);
+    });
+    helpClose.addEventListener('click', closeHelp);
+    helpBackdrop.addEventListener('click', closeHelp);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && helpOverlay.classList.contains('is-open')) {
+        closeHelp();
+      }
+    });
+  }
+
+  document.querySelectorAll('.product-card__swatch').forEach(function (swatch) {
+    swatch.addEventListener('mouseenter', function () {
+      var card = swatch.closest('.product-card');
+      var img = card && card.querySelector('.product-card__img');
+      var newSrc = swatch.getAttribute('data-image');
+      if (img && newSrc) {
+        img.src = newSrc;
+      }
+    });
+    swatch.addEventListener('click', function (e) {
+      e.preventDefault();
+    });
+  });
 
   document.querySelectorAll('.product__sizes').forEach(function (group) {
     group.querySelectorAll('.size-btn:not(.is-sold-out)').forEach(function (btn) {
