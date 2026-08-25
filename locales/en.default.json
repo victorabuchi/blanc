@@ -9,7 +9,13 @@
       "item_count": {
         "one": "{{ count }} item",
         "other": "{{ count }} items"
-      }
+      },
+      "continue_shopping": "Continue shopping",
+      "remove": "Remove",
+      "subtotal": "Subtotal",
+      "taxes_note": "Taxes and shipping calculated at checkout",
+      "update": "Update bag",
+      "checkout": "Checkout"
     },
     "newsletter": {
       "email_placeholder": "Email address",

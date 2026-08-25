@@ -1,0 +1,70 @@
+<div class="page-banner">
+  <p class="page-banner__title">{{ 'general.cart.title' | t }}</p>
+</div>
+
+{%- if cart.item_count == 0 -%}
+  <div class="cart-empty">
+    <p class="cart-empty__text">{{ 'general.cart.empty' | t }}</p>
+    <a href="{{ routes.all_products_collection_url }}" class="cart-empty__link">{{ 'general.cart.continue_shopping' | t }}</a>
+  </div>
+{%- else -%}
+  {% form 'cart', cart, class: 'cart-form' %}
+    <div class="cart-items">
+      {%- for item in cart.items -%}
+        <div class="cart-item">
+          <a href="{{ item.url }}" class="cart-item__image">
+            {%- if item.image -%}
+              <img
+                src="{{ item.image | image_url: width: 300 }}"
+                alt="{{ item.image.alt | default: item.product.title | escape }}"
+                loading="lazy"
+                width="300"
+                height="{{ 300 | divided_by: item.image.aspect_ratio }}"
+              >
+            {%- endif -%}
+          </a>
+
+          <div class="cart-item__info">
+            <a href="{{ item.url }}" class="cart-item__name">{{ item.product.title }}</a>
+            {%- unless item.product.has_only_default_variant -%}
+              <p class="cart-item__variant">{{ item.variant.title }}</p>
+            {%- endunless -%}
+            <p class="cart-item__price">{{ item.final_price | money }}</p>
+
+            <div class="cart-item__controls">
+              <input
+                type="number"
+                class="cart-item__qty"
+                name="updates[{{ item.key }}]"
+                value="{{ item.quantity }}"
+                min="0"
+                aria-label="{{ 'products.product.quantity' | t }}"
+              >
+              <a href="{{ item.url_to_remove }}" class="cart-item__remove">{{ 'general.cart.remove' | t }}</a>
+            </div>
+          </div>
+
+          <p class="cart-item__line-total">{{ item.final_line_price | money }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="cart-summary">
+      <div class="cart-summary__row">
+        <span>{{ 'general.cart.subtotal' | t }}</span>
+        <span>{{ cart.total_price | money }}</span>
+      </div>
+      <p class="cart-summary__note">{{ 'general.cart.taxes_note' | t }}</p>
+
+      <button type="submit" name="update" class="cart-summary__update">{{ 'general.cart.update' | t }}</button>
+      <button type="submit" name="checkout" class="cart-summary__checkout">{{ 'general.cart.checkout' | t }}</button>
+    </div>
+  {% endform %}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}

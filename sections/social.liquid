@@ -44,6 +44,18 @@
     </li>
 
     <li>
+      <a href="{{ settings.social_facebook_link | default: 'https://facebook.com/frozenholm' }}" class="social-row" target="_blank" rel="noopener noreferrer">
+        <span class="social-row__left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#1a1a1a">
+            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99h-2.54v-2.89h2.54V9.79c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.89h-2.34v6.99C18.34 21.13 22 16.99 22 12z"/>
+          </svg>
+          <span class="social-row__platform">Facebook</span>
+        </span>
+        <span class="social-row__handle">{{ section.settings.handle }}</span>
+      </a>
+    </li>
+
+    <li>
       <a href="{{ settings.social_youtube_link | default: 'https://youtube.com/@frozenholm' }}" class="social-row" target="_blank" rel="noopener noreferrer">
         <span class="social-row__left">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="#1a1a1a">

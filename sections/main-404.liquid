@@ -1,0 +1,19 @@
+<div class="error-404">
+  <p class="error-404__title">{{ '404.title' | t }}</p>
+  <p class="error-404__text">{{ '404.subtext' | t }}</p>
+  <a href="{{ routes.root_url }}" class="error-404__link">{{ section.settings.link_label }}</a>
+</div>
+
+{% schema %}
+{
+  "name": "404",
+  "settings": [
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Back to homepage"
+    }
+  ]
+}
+{% endschema %}

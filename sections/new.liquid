@@ -1,0 +1,52 @@
+<div class="page-banner">
+  <p class="page-banner__title">{{ section.settings.title }}</p>
+  {%- if section.settings.subtitle != blank -%}
+    <p class="page-banner__subtitle">{{ section.settings.subtitle }}</p>
+  {%- endif -%}
+</div>
+
+<div class="product-grid">
+  {%- for product in collections[section.settings.collection].products -%}
+    {%- render 'product-card', product: product -%}
+  {%- else -%}
+    {%- for i in (1..8) -%}
+      <div class="product-card">
+        <div class="product-card__image"></div>
+        <div class="product-card__info">
+          <p class="product-card__name">Product title</p>
+          <p class="product-card__price">&euro;0</p>
+        </div>
+      </div>
+    {%- endfor -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "New",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "NEW"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "THE LATEST DROP"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New"
+    }
+  ]
+}
+{% endschema %}
