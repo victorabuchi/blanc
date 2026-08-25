@@ -9,62 +9,64 @@
 {%- endfor -%}
 
 <a href="{{ product.url }}" class="product-card">
-  <div class="product-card__image">
-    {%- if product.featured_image -%}
-      <img
-        class="product-card__img"
-        src="{{ product.featured_image | image_url: width: 800 }}"
-        alt="{{ product.featured_image.alt | default: product.title | escape }}"
-        loading="lazy"
-        width="800"
-        height="{{ 800 | divided_by: product.featured_image.aspect_ratio }}"
-      >
-    {%- endif -%}
-
-    {%- if product.metafields.custom.piece_number -%}
-      <span class="product-card__badge">
-        {{ product.metafields.custom.piece_number }} / {{ product.metafields.custom.total_pieces | default: settings.pieces_per_drop | default: '099' }}
-      </span>
-    {%- endif -%}
-
-    {%- unless product.available -%}
-      <div class="product-card__sold-out">SOLD<br>OUT</div>
-    {%- endunless -%}
-  </div>
-
-  {%- if color_position > 0 -%}
-    {%- assign seen_colors = '' -%}
-    {%- assign swatch_count = 0 -%}
-    {%- assign extra_count = 0 -%}
-    <div class="product-card__swatches">
-      {%- for variant in product.variants -%}
-        {%- case color_position -%}
-          {%- when 1 -%}{%- assign color_val = variant.option1 -%}
-          {%- when 2 -%}{%- assign color_val = variant.option2 -%}
-          {%- when 3 -%}{%- assign color_val = variant.option3 -%}
-        {%- endcase -%}
-        {%- assign needle = color_val | append: '|' -%}
-        {%- unless seen_colors contains needle -%}
-          {%- assign seen_colors = seen_colors | append: needle -%}
-          {%- if swatch_count < 4 -%}
-            <button
-              type="button"
-              class="product-card__swatch"
-              title="{{ color_val }}"
-              aria-label="{{ color_val }}"
-              data-image="{{ variant.featured_image | default: product.featured_image | image_url: width: 800 }}"
-            ></button>
-            {%- assign swatch_count = swatch_count | plus: 1 -%}
-          {%- else -%}
-            {%- assign extra_count = extra_count | plus: 1 -%}
-          {%- endif -%}
-        {%- endunless -%}
-      {%- endfor -%}
-      {%- if extra_count > 0 -%}
-        <span class="product-card__swatch-more">+{{ extra_count }}</span>
+  <div class="product-card__media">
+    <div class="product-card__image">
+      {%- if product.featured_image -%}
+        <img
+          class="product-card__img"
+          src="{{ product.featured_image | image_url: width: 800 }}"
+          alt="{{ product.featured_image.alt | default: product.title | escape }}"
+          loading="lazy"
+          width="800"
+          height="{{ 800 | divided_by: product.featured_image.aspect_ratio }}"
+        >
       {%- endif -%}
+
+      {%- if product.metafields.custom.piece_number -%}
+        <span class="product-card__badge">
+          {{ product.metafields.custom.piece_number }} / {{ product.metafields.custom.total_pieces | default: settings.pieces_per_drop | default: '099' }}
+        </span>
+      {%- endif -%}
+
+      {%- unless product.available -%}
+        <div class="product-card__sold-out">SOLD<br>OUT</div>
+      {%- endunless -%}
     </div>
-  {%- endif -%}
+
+    {%- if color_position > 0 -%}
+      {%- assign seen_colors = '' -%}
+      {%- assign swatch_count = 0 -%}
+      {%- assign extra_count = 0 -%}
+      <div class="product-card__swatches">
+        {%- for variant in product.variants -%}
+          {%- case color_position -%}
+            {%- when 1 -%}{%- assign color_val = variant.option1 -%}
+            {%- when 2 -%}{%- assign color_val = variant.option2 -%}
+            {%- when 3 -%}{%- assign color_val = variant.option3 -%}
+          {%- endcase -%}
+          {%- assign needle = color_val | append: '|' -%}
+          {%- unless seen_colors contains needle -%}
+            {%- assign seen_colors = seen_colors | append: needle -%}
+            {%- if swatch_count < 4 -%}
+              <button
+                type="button"
+                class="product-card__swatch"
+                title="{{ color_val }}"
+                aria-label="{{ color_val }}"
+                data-image="{{ variant.featured_image | default: product.featured_image | image_url: width: 800 }}"
+              ></button>
+              {%- assign swatch_count = swatch_count | plus: 1 -%}
+            {%- else -%}
+              {%- assign extra_count = extra_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endunless -%}
+        {%- endfor -%}
+        {%- if extra_count > 0 -%}
+          <span class="product-card__swatch-more">+{{ extra_count }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
 
   <div class="product-card__info">
     <p class="product-card__name">{{ product.title }}</p>

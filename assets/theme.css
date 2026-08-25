@@ -561,10 +561,13 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   background: var(--white);
+}
+
+.product-card__media {
   transition: box-shadow 0.15s;
 }
 
-.product-card:hover {
+.product-card:hover .product-card__media {
   box-shadow: inset 0 0 0 1px var(--black);
 }
 
