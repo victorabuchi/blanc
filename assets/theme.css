@@ -404,16 +404,20 @@ h1, h2, h3, h4 {
 .hero__link {
   display: inline-block;
   margin-top: 28px;
+  padding: 15px 32px;
+  background: var(--white);
+  border: 1px solid var(--black);
   font-size: 11px;
-  letter-spacing: 0.2em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  text-decoration: underline;
-  text-underline-offset: 4px;
   color: var(--black);
+  transition: background 0.15s, color 0.15s;
 }
 
 .hero__link:hover {
-  opacity: 0.5;
+  background: var(--black);
+  color: var(--white);
 }
 
 /* ============ SECTION HEADING ============ */
@@ -1121,41 +1125,52 @@ h1, h2, h3, h4 {
 }
 
 .site-footer__mailing-field {
-  position: relative;
+  background: var(--grey);
+  padding: 10px 14px 12px;
+  transition: background 0.15s;
 }
 
-.site-footer__mailing-input {
-  width: 100%;
-  padding: 14px 44px 14px 14px;
-  border: none;
-  font-size: 11px;
+.site-footer__mailing-field:focus-within {
+  background: #eef0ff;
+}
+
+.site-footer__mailing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-footer__mailing-label {
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: var(--grey);
-  outline: none;
-}
-
-.site-footer__mailing-input::placeholder {
   color: var(--muted);
 }
 
 .site-footer__mailing-submit {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: none;
   border: none;
-  color: var(--black);
-  transition: color 0.15s;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0000ee;
+  transition: opacity 0.15s;
 }
 
 .site-footer__mailing-submit:hover {
-  color: #0000ee;
+  opacity: 0.6;
+}
+
+.site-footer__mailing-input {
+  display: block;
+  width: 100%;
+  padding: 2px 0 0;
+  border: none;
+  font-size: 16px;
+  background: transparent;
+  outline: none;
+  color: var(--black);
 }
 
 .site-footer__social {

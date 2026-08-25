@@ -201,19 +201,17 @@
         {% form 'customer', id: 'footer-newsletter-form', class: 'site-footer__mailing-form' %}
           <input type="hidden" name="contact[tags]" value="newsletter">
           <div class="site-footer__mailing-field">
+            <div class="site-footer__mailing-row">
+              <label for="footer-newsletter-email" class="site-footer__mailing-label">Email</label>
+              <button type="submit" class="site-footer__mailing-submit">Sign up</button>
+            </div>
             <input
               type="email"
+              id="footer-newsletter-email"
               name="contact[email]"
               class="site-footer__mailing-input"
-              placeholder="EMAIL"
               required
             >
-            <button type="submit" class="site-footer__mailing-submit" aria-label="Subscribe">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="4" y1="12" x2="20" y2="12"/>
-                <polyline points="14 6 20 12 14 18"/>
-              </svg>
-            </button>
           </div>
         {% endform %}
       </div>
