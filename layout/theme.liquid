@@ -196,18 +196,24 @@
   <footer class="site-footer">
     <div class="site-footer__inner">
       <div class="site-footer__mailing">
-        <p class="site-footer__mailing-title">Mailing List</p>
-        {% form 'customer', id: 'footer-newsletter-form' %}
+        <p class="site-footer__mailing-title">Newsletter</p>
+        <p class="site-footer__mailing-subtitle">Receive news about Frozenholm drops, collabs and sales.</p>
+        {% form 'customer', id: 'footer-newsletter-form', class: 'site-footer__mailing-form' %}
           <input type="hidden" name="contact[tags]" value="newsletter">
-          <div class="site-footer__mailing-form">
+          <div class="site-footer__mailing-field">
             <input
               type="email"
               name="contact[email]"
               class="site-footer__mailing-input"
-              placeholder="Email address"
+              placeholder="EMAIL"
               required
             >
-            <button type="submit" class="site-footer__mailing-submit">Subscribe</button>
+            <button type="submit" class="site-footer__mailing-submit" aria-label="Subscribe">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="12" x2="20" y2="12"/>
+                <polyline points="14 6 20 12 14 18"/>
+              </svg>
+            </button>
           </div>
         {% endform %}
       </div>

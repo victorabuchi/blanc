@@ -434,20 +434,13 @@ h1, h2, h3, h4 {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  gap: 40px 0;
 }
 
 .product-card {
   display: flex;
   flex-direction: column;
   background: var(--white);
-  padding: 20px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.product-card:nth-child(4n) {
-  border-right: none;
 }
 
 .product-card__image {
@@ -1101,58 +1094,68 @@ h1, h2, h3, h4 {
 }
 
 .site-footer__mailing {
-  text-align: center;
+  text-align: left;
   flex: 1;
   min-width: 260px;
+  max-width: 380px;
 }
 
 .site-footer__mailing-title {
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
   color: var(--black);
 }
 
+.site-footer__mailing-subtitle {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--black);
+  margin-bottom: 18px;
+}
+
 .site-footer__mailing-form {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  max-width: 360px;
-  margin: 0 auto;
+  display: block;
+}
+
+.site-footer__mailing-field {
+  position: relative;
 }
 
 .site-footer__mailing-input {
-  flex: 1;
-  padding: 12px 14px;
-  border: 1px solid var(--black);
+  width: 100%;
+  padding: 14px 44px 14px 14px;
+  border: none;
   font-size: 11px;
-  background: var(--white);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--grey);
   outline: none;
 }
 
 .site-footer__mailing-input::placeholder {
-  color: #aaaaaa;
+  color: var(--muted);
 }
 
 .site-footer__mailing-submit {
-  padding: 12px 20px;
-  background: var(--black);
-  color: var(--white);
-  border: 1px solid var(--black);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  transition: background 0.15s, color 0.15s;
-  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--black);
+  transition: color 0.15s;
 }
 
 .site-footer__mailing-submit:hover {
-  background: var(--white);
-  color: var(--black);
+  color: #0000ee;
 }
 
 .site-footer__social {
@@ -1188,14 +1191,6 @@ h1, h2, h3, h4 {
 @media (max-width: 900px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .product-card {
-    padding: 16px;
-  }
-
-  .product-card:nth-child(2n) {
-    border-right: none;
   }
 
   .product {
