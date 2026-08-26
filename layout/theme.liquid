@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Big+Shoulders+Display:wght@700;800;900&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   {{ content_for_header }}
 
@@ -233,7 +233,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="site-footer__inner">
+    <div class="site-footer__promo">
       <div class="site-footer__mailing">
         <p class="site-footer__mailing-title">Newsletter</p>
         <p class="site-footer__mailing-subtitle">Receive news about Frozenholm drops, collabs and sales.</p>
@@ -255,12 +255,57 @@
         {% endform %}
       </div>
 
-      <div class="site-footer__social">
-        <a href="{{ settings.social_instagram_link | default: 'https://instagram.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="{{ settings.social_tiktok_link | default: 'https://tiktok.com/@frozenholm' }}" target="_blank" rel="noopener noreferrer">TikTok</a>
-        <a href="{{ settings.social_x_link | default: 'https://x.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">X</a>
-        <a href="{{ settings.social_facebook_link | default: 'https://facebook.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <div class="site-footer__promo-item">
+        <p class="site-footer__promo-title">Free shipping &amp; returns</p>
+        <p class="site-footer__promo-text">Fast delivery and easy returns on all orders.</p>
       </div>
+
+      <div class="site-footer__promo-item">
+        <p class="site-footer__promo-title">Secure checkout</p>
+        <p class="site-footer__promo-text">Encrypted payments through Shopify's secure checkout.</p>
+      </div>
+    </div>
+
+    <div class="site-footer__links">
+      <div class="site-footer__links-col">
+        <p class="site-footer__links-title">Contact us</p>
+        <a href="#" class="site-footer__links-link">Live chat<span class="site-footer__links-status">Offline</span></a>
+        <a href="#" class="site-footer__links-link">Call<span class="site-footer__links-status">Offline</span></a>
+        <a href="mailto:hello@frozenholm.com" class="site-footer__links-link">Email</a>
+      </div>
+
+      <div class="site-footer__links-col">
+        <p class="site-footer__links-title">Help</p>
+        <a href="{{ routes.account_url }}" class="site-footer__links-link">Order status</a>
+        <a href="/pages/support" class="site-footer__links-link">Register a return</a>
+        <a href="/pages/support" class="site-footer__links-link">FAQs</a>
+      </div>
+
+      <div class="site-footer__links-col">
+        <p class="site-footer__links-title">Shop</p>
+        <a href="/pages/new" class="site-footer__links-link">New</a>
+        <a href="/pages/combos" class="site-footer__links-link">Combos</a>
+        <a href="/pages/archive" class="site-footer__links-link">Archive</a>
+      </div>
+
+      <div class="site-footer__links-col">
+        <p class="site-footer__links-title">Company</p>
+        <a href="/pages/archive" class="site-footer__links-link">About</a>
+        <a href="/pages/social" class="site-footer__links-link">Social</a>
+        {%- if shop.privacy_policy -%}
+          <a href="{{ shop.privacy_policy.url }}" class="site-footer__links-link">Privacy policy</a>
+        {%- endif -%}
+        {%- if shop.terms_of_service -%}
+          <a href="{{ shop.terms_of_service.url }}" class="site-footer__links-link">Terms of service</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="site-footer__social">
+      <a href="{{ settings.social_instagram_link | default: 'https://instagram.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="{{ settings.social_tiktok_link | default: 'https://tiktok.com/@frozenholm' }}" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a href="{{ settings.social_x_link | default: 'https://x.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="{{ settings.social_facebook_link | default: 'https://facebook.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Facebook</a>
     </div>
 
     <div class="site-footer__bottom">
