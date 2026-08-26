@@ -300,16 +300,128 @@
     </div>
 
     <div class="site-footer__bottom">
-      <span class="site-footer__copyright">&copy; 2026 {{ shop.name | upcase }}</span>
+      <div class="site-footer__bottom-row">
+        <span class="site-footer__copyright">&copy; 2026 {{ shop.name | upcase }}</span>
 
-      <div class="site-footer__social">
-        <a href="{{ settings.social_instagram_link | default: 'https://instagram.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="{{ settings.social_tiktok_link | default: 'https://tiktok.com/@frozenholm' }}" target="_blank" rel="noopener noreferrer">TikTok</a>
-        <a href="{{ settings.social_x_link | default: 'https://x.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">X</a>
-        <a href="{{ settings.social_facebook_link | default: 'https://facebook.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <div class="site-footer__social">
+          <a href="{{ settings.social_instagram_link | default: 'https://instagram.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="{{ settings.social_tiktok_link | default: 'https://tiktok.com/@frozenholm' }}" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="{{ settings.social_x_link | default: 'https://x.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="{{ settings.social_facebook_link | default: 'https://facebook.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+
+        <button type="button" class="site-footer__location-toggle" aria-controls="location-overlay">
+          Shipping to {{ localization.country.name | default: 'Finland' | upcase }} ({{ localization.language.endonym_name | default: 'English' | upcase }})
+        </button>
+      </div>
+
+      <div class="site-footer__bottom-row">
+        <button type="button" class="site-footer__cookie-toggle" aria-controls="cookie-overlay">Cookie settings</button>
       </div>
     </div>
   </footer>
+
+  <div class="cookie-overlay-backdrop" id="cookie-overlay-backdrop" hidden></div>
+  <div class="cookie-overlay" id="cookie-overlay" aria-hidden="true">
+    <div class="cookie-overlay__header">
+      <span class="cookie-overlay__title">Your cookie settings</span>
+      <button type="button" class="cookie-overlay__close" aria-label="Close cookie settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+        stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="cookie-overlay__body">
+      <h2 class="cookie-overlay__heading">Cookie settings</h2>
+      <p class="cookie-overlay__text">
+        When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies.
+        This information might be about you, your preferences or your device and is mostly used to make the site work
+        as you expect it to. Because we respect your right to privacy, you can choose not to allow some types of
+        cookies. Blocking some types of cookies may impact your experience of the site and the services we are able
+        to offer.
+      </p>
+
+      <h2 class="cookie-overlay__heading">Manage consent preferences</h2>
+
+      <div class="cookie-overlay__row">
+        <span class="cookie-overlay__row-label">Performance cookies</span>
+        <label class="cookie-overlay__switch">
+          <input type="checkbox" data-cookie-toggle="analytics" checked>
+          <span class="cookie-overlay__switch-track"></span>
+        </label>
+      </div>
+
+      <div class="cookie-overlay__row">
+        <span class="cookie-overlay__row-label">Targeting cookies</span>
+        <label class="cookie-overlay__switch">
+          <input type="checkbox" data-cookie-toggle="marketing" checked>
+          <span class="cookie-overlay__switch-track"></span>
+        </label>
+      </div>
+
+      <div class="cookie-overlay__row">
+        <span class="cookie-overlay__row-label">Strictly necessary cookies</span>
+        <span class="cookie-overlay__row-static">Always active</span>
+      </div>
+
+      <div class="cookie-overlay__row">
+        <span class="cookie-overlay__row-label">Functional cookies</span>
+        <label class="cookie-overlay__switch">
+          <input type="checkbox" data-cookie-toggle="preferences" checked>
+          <span class="cookie-overlay__switch-track"></span>
+        </label>
+      </div>
+
+      <button type="button" class="cookie-overlay__confirm">Confirm my choices</button>
+    </div>
+  </div>
+
+  <div class="location-overlay-backdrop" id="location-overlay-backdrop" hidden></div>
+  <div class="location-overlay" id="location-overlay" aria-hidden="true">
+    <div class="location-overlay__header">
+      <span class="location-overlay__title">Change location</span>
+      <button type="button" class="location-overlay__close" aria-label="Close change location">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+        stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="location-overlay__body">
+      <p class="location-overlay__text">
+        You are currently shipping to {{ localization.country.name | default: 'Finland' }} and your order will be
+        billed in {{ localization.country.currency.iso_code | default: 'EUR' }}.
+      </p>
+
+      {%- if localization.available_countries.size > 1 -%}
+        <p class="location-overlay__label">Shipping location</p>
+        <input type="search" class="location-overlay__search" id="location-search" placeholder="Search locations" autocomplete="off">
+
+        {% form 'localization', id: 'footer-country-form' %}
+          <div class="location-overlay__list" id="location-country-list">
+            {%- for country in localization.available_countries -%}
+              <button
+                type="submit"
+                name="country_code"
+                value="{{ country.iso_code }}"
+                class="location-overlay__item{% if country.iso_code == localization.country.iso_code %} is-active{% endif %}"
+                data-country-name="{{ country.name | escape }}"
+              >
+                {{ country.name }} ({{ country.currency.iso_code }})
+              </button>
+            {%- endfor -%}
+          </div>
+        {% endform %}
+      {%- endif -%}
+    </div>
+  </div>
 
   {{ 'theme.js' | asset_url | script_tag }}
 </body>

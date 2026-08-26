@@ -133,6 +133,130 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  var cookieToggle = document.querySelector('.site-footer__cookie-toggle');
+  var cookieOverlay = document.getElementById('cookie-overlay');
+  var cookieBackdrop = document.getElementById('cookie-overlay-backdrop');
+  var cookieClose = document.querySelector('.cookie-overlay__close');
+  var cookieConfirm = document.querySelector('.cookie-overlay__confirm');
+
+  function openCookie() {
+    cookieOverlay.classList.add('is-open');
+    cookieOverlay.setAttribute('aria-hidden', 'false');
+    cookieBackdrop.hidden = false;
+    requestAnimationFrame(function () {
+      cookieBackdrop.classList.add('is-visible');
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCookie() {
+    cookieOverlay.classList.remove('is-open');
+    cookieOverlay.setAttribute('aria-hidden', 'true');
+    cookieBackdrop.classList.remove('is-visible');
+    document.body.style.overflow = '';
+    setTimeout(function () {
+      cookieBackdrop.hidden = true;
+    }, 250);
+  }
+
+  if (cookieToggle && cookieOverlay && cookieBackdrop) {
+    cookieToggle.addEventListener('click', openCookie);
+    cookieClose.addEventListener('click', closeCookie);
+    cookieBackdrop.addEventListener('click', closeCookie);
+
+    try {
+      var savedConsent = JSON.parse(localStorage.getItem('frozenholm-cookie-consent') || 'null');
+      if (savedConsent) {
+        document.querySelectorAll('[data-cookie-toggle]').forEach(function (input) {
+          var key = input.getAttribute('data-cookie-toggle');
+          if (typeof savedConsent[key] === 'boolean') {
+            input.checked = savedConsent[key];
+          }
+        });
+      }
+    } catch (e) {}
+
+    if (cookieConfirm) {
+      cookieConfirm.addEventListener('click', function () {
+        var consent = {};
+        document.querySelectorAll('[data-cookie-toggle]').forEach(function (input) {
+          consent[input.getAttribute('data-cookie-toggle')] = input.checked;
+        });
+        try {
+          localStorage.setItem('frozenholm-cookie-consent', JSON.stringify(consent));
+        } catch (e) {}
+
+        if (
+          window.Shopify &&
+          window.Shopify.customerPrivacy &&
+          typeof window.Shopify.customerPrivacy.setTrackingConsent === 'function'
+        ) {
+          window.Shopify.customerPrivacy.setTrackingConsent({
+            analytics: !!consent.analytics,
+            marketing: !!consent.marketing,
+            preferences: !!consent.preferences,
+            sale_of_data: !!consent.marketing
+          }, function () {});
+        }
+
+        closeCookie();
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && cookieOverlay.classList.contains('is-open')) {
+        closeCookie();
+      }
+    });
+  }
+
+  var locationToggle = document.querySelector('.site-footer__location-toggle');
+  var locationOverlay = document.getElementById('location-overlay');
+  var locationBackdrop = document.getElementById('location-overlay-backdrop');
+  var locationClose = document.querySelector('.location-overlay__close');
+  var locationSearch = document.getElementById('location-search');
+
+  function openLocation() {
+    locationOverlay.classList.add('is-open');
+    locationOverlay.setAttribute('aria-hidden', 'false');
+    locationBackdrop.hidden = false;
+    requestAnimationFrame(function () {
+      locationBackdrop.classList.add('is-visible');
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLocation() {
+    locationOverlay.classList.remove('is-open');
+    locationOverlay.setAttribute('aria-hidden', 'true');
+    locationBackdrop.classList.remove('is-visible');
+    document.body.style.overflow = '';
+    setTimeout(function () {
+      locationBackdrop.hidden = true;
+    }, 250);
+  }
+
+  if (locationToggle && locationOverlay && locationBackdrop) {
+    locationToggle.addEventListener('click', openLocation);
+    locationClose.addEventListener('click', closeLocation);
+    locationBackdrop.addEventListener('click', closeLocation);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && locationOverlay.classList.contains('is-open')) {
+        closeLocation();
+      }
+    });
+
+    if (locationSearch) {
+      locationSearch.addEventListener('input', function () {
+        var query = locationSearch.value.trim().toLowerCase();
+        document.querySelectorAll('.location-overlay__item').forEach(function (item) {
+          var name = (item.getAttribute('data-country-name') || '').toLowerCase();
+          item.hidden = query.length > 0 && name.indexOf(query) === -1;
+        });
+      });
+    }
+  }
+
   document.querySelectorAll('.product-card__swatch').forEach(function (swatch) {
     swatch.addEventListener('mouseenter', function () {
       var card = swatch.closest('.product-card');
