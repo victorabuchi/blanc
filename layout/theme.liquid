@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Big+Shoulders+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Big+Shoulders+Display:wght@700;800;900&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 
   {{ content_for_header }}
 
@@ -27,7 +27,8 @@
       <nav class="site-header__nav">
         <a href="/pages/new">New</a>
         <a href="/pages/combos">Combos</a>
-        <a href="/pages/collabs">Collabs</a>
+        {%- comment -%} Collabs temporarily hidden — remove this comment to restore {%- endcomment -%}
+        {%- comment -%}<a href="/pages/collabs">Collabs</a>{%- endcomment -%}
         <a href="/pages/archive">Archive</a>
       </nav>
 
@@ -147,7 +148,7 @@
     <ul class="mobile-nav-drawer__links">
       <li><a href="/pages/new">New</a></li>
       <li><a href="/pages/combos">Combos</a></li>
-      <li><a href="/pages/collabs">Collabs</a></li>
+      {%- comment -%}<li><a href="/pages/collabs">Collabs</a></li>{%- endcomment -%}
       <li><a href="/pages/archive">Archive</a></li>
       <li><button type="button" class="help-overlay-toggle" aria-controls="help-overlay">Help</button></li>
     </ul>
@@ -182,7 +183,7 @@
       <ul class="search-overlay__suggestions-list">
         <li><a href="/pages/new">New</a></li>
         <li><a href="/pages/combos">Combos</a></li>
-        <li><a href="/pages/collabs">Collabs</a></li>
+        {%- comment -%}<li><a href="/pages/collabs">Collabs</a></li>{%- endcomment -%}
         <li><a href="/pages/archive">Archive</a></li>
         <li><button type="button" class="help-overlay-toggle" aria-controls="help-overlay">Help</button></li>
       </ul>
