@@ -12,9 +12,6 @@
 
   <link rel="canonical" href="{{ canonical_url }}">
   <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   {{ content_for_header }}
 
@@ -240,17 +237,18 @@
         {% form 'customer', id: 'footer-newsletter-form', class: 'site-footer__mailing-form' %}
           <input type="hidden" name="contact[tags]" value="newsletter">
           <div class="site-footer__mailing-field">
-            <div class="site-footer__mailing-row">
-              <label for="footer-newsletter-email" class="site-footer__mailing-label">Email</label>
-              <button type="submit" class="site-footer__mailing-submit">Sign up</button>
-            </div>
             <input
               type="email"
               id="footer-newsletter-email"
               name="contact[email]"
               class="site-footer__mailing-input"
+              placeholder=" "
               required
             >
+            <div class="site-footer__mailing-row">
+              <label for="footer-newsletter-email" class="site-footer__mailing-label">Email</label>
+              <button type="submit" class="site-footer__mailing-submit">Sign up</button>
+            </div>
           </div>
         {% endform %}
       </div>
@@ -301,15 +299,15 @@
       </div>
     </div>
 
-    <div class="site-footer__social">
-      <a href="{{ settings.social_instagram_link | default: 'https://instagram.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="{{ settings.social_tiktok_link | default: 'https://tiktok.com/@frozenholm' }}" target="_blank" rel="noopener noreferrer">TikTok</a>
-      <a href="{{ settings.social_x_link | default: 'https://x.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">X</a>
-      <a href="{{ settings.social_facebook_link | default: 'https://facebook.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Facebook</a>
-    </div>
-
     <div class="site-footer__bottom">
       <span class="site-footer__copyright">&copy; 2026 {{ shop.name | upcase }}</span>
+
+      <div class="site-footer__social">
+        <a href="{{ settings.social_instagram_link | default: 'https://instagram.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="{{ settings.social_tiktok_link | default: 'https://tiktok.com/@frozenholm' }}" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="{{ settings.social_x_link | default: 'https://x.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="{{ settings.social_facebook_link | default: 'https://facebook.com/frozenholm' }}" target="_blank" rel="noopener noreferrer">Facebook</a>
+      </div>
     </div>
   </footer>
 

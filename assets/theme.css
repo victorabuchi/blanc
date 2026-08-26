@@ -51,10 +51,10 @@ button {
 body {
   background: var(--white);
   color: var(--black);
-  font-family: "Jost", "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.01em;
-  line-height: 1.5;
+  font-family: "Helvetica Now Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.025em;
+  line-height: 20px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -1343,6 +1343,8 @@ h1, h2, h3, h4 {
 }
 
 .site-footer__mailing-field {
+  display: flex;
+  flex-direction: column;
   background: var(--grey);
   padding: 10px 14px 12px;
   transition: background 0.15s;
@@ -1353,6 +1355,7 @@ h1, h2, h3, h4 {
 }
 
 .site-footer__mailing-row {
+  order: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1373,7 +1376,14 @@ h1, h2, h3, h4 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #0000ee;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.15s;
+}
+
+.site-footer__mailing-input:not(:placeholder-shown) ~ .site-footer__mailing-row .site-footer__mailing-submit {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .site-footer__mailing-submit:hover {
@@ -1381,6 +1391,7 @@ h1, h2, h3, h4 {
 }
 
 .site-footer__mailing-input {
+  order: 2;
   display: block;
   width: 100%;
   padding: 2px 0 0;
@@ -1394,8 +1405,6 @@ h1, h2, h3, h4 {
 .site-footer__social {
   display: flex;
   gap: 16px;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .site-footer__social a {
@@ -1410,6 +1419,11 @@ h1, h2, h3, h4 {
 }
 
 .site-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
   max-width: 1200px;
   margin: 32px auto 0;
   padding-top: 24px;
