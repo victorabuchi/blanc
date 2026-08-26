@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  var locationToggle = document.querySelector('.site-footer__location-toggle');
+  var locationToggles = document.querySelectorAll('.site-footer__location-toggle, .location-overlay-toggle');
   var locationOverlay = document.getElementById('location-overlay');
   var locationBackdrop = document.getElementById('location-overlay-backdrop');
   var locationClose = document.querySelector('.location-overlay__close');
@@ -236,8 +236,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 250);
   }
 
-  if (locationToggle && locationOverlay && locationBackdrop) {
-    locationToggle.addEventListener('click', openLocation);
+  if (locationToggles.length && locationOverlay && locationBackdrop) {
+    locationToggles.forEach(function (btn) {
+      btn.addEventListener('click', openLocation);
+    });
     locationClose.addEventListener('click', closeLocation);
     locationBackdrop.addEventListener('click', closeLocation);
     document.addEventListener('keydown', function (e) {
@@ -255,6 +257,47 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
     }
+  }
+
+  var discoverToggle = document.querySelector('.site-header__discover');
+  var discoverOverlay = document.getElementById('discover-overlay');
+  var discoverBackdrop = document.getElementById('discover-overlay-backdrop');
+  var discoverClose = document.querySelector('.discover-overlay__close');
+
+  function openDiscover() {
+    discoverOverlay.classList.add('is-open');
+    discoverOverlay.setAttribute('aria-hidden', 'false');
+    discoverBackdrop.hidden = false;
+    requestAnimationFrame(function () {
+      discoverBackdrop.classList.add('is-visible');
+    });
+    discoverToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDiscover() {
+    discoverOverlay.classList.remove('is-open');
+    discoverOverlay.setAttribute('aria-hidden', 'true');
+    discoverBackdrop.classList.remove('is-visible');
+    discoverToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    setTimeout(function () {
+      discoverBackdrop.hidden = true;
+    }, 250);
+  }
+
+  if (discoverToggle && discoverOverlay && discoverBackdrop) {
+    discoverToggle.addEventListener('click', openDiscover);
+    discoverClose.addEventListener('click', closeDiscover);
+    discoverBackdrop.addEventListener('click', closeDiscover);
+    discoverOverlay.querySelectorAll('a, .discover-overlay__link').forEach(function (link) {
+      link.addEventListener('click', closeDiscover);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && discoverOverlay.classList.contains('is-open')) {
+        closeDiscover();
+      }
+    });
   }
 
   document.querySelectorAll('.product-card__swatch').forEach(function (swatch) {

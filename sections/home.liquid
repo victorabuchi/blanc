@@ -1,6 +1,8 @@
 <section class="hero">
   <div class="hero__inner">
-    <h1 class="hero__title">{{ section.settings.headline }}</h1>
+    {%- if section.settings.headline != blank -%}
+      <h1 class="hero__title">{{ section.settings.headline }}</h1>
+    {%- endif -%}
     <a href="{{ section.settings.hero_link }}" class="hero__link">{{ section.settings.hero_link_label }}</a>
   </div>
 </section>
@@ -33,7 +35,7 @@
       "type": "text",
       "id": "headline",
       "label": "Headline",
-      "default": "GREATNESS DOESN'T WAIT FOR GOOD CONDITIONS."
+      "default": ""
     },
     {
       "type": "url",
