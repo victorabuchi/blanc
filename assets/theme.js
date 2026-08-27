@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     menuToggle.addEventListener('click', openDrawer);
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
-    drawer.querySelectorAll('a, button:not(.help-overlay-toggle)').forEach(function (link) {
+    drawer.querySelectorAll('a, button:not(.help-overlay-toggle):not(.discover-overlay-toggle)').forEach(function (link) {
       link.addEventListener('click', closeDrawer);
     });
   }
@@ -259,19 +259,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  var discoverToggle = document.querySelector('.site-header__discover');
+  var discoverToggles = document.querySelectorAll('.discover-overlay-toggle');
   var discoverOverlay = document.getElementById('discover-overlay');
   var discoverBackdrop = document.getElementById('discover-overlay-backdrop');
   var discoverClose = document.querySelector('.discover-overlay__close');
 
   function openDiscover() {
+    if (drawer && drawer.classList.contains('is-open')) {
+      closeDrawer();
+    }
     discoverOverlay.classList.add('is-open');
     discoverOverlay.setAttribute('aria-hidden', 'false');
     discoverBackdrop.hidden = false;
     requestAnimationFrame(function () {
       discoverBackdrop.classList.add('is-visible');
     });
-    discoverToggle.setAttribute('aria-expanded', 'true');
+    discoverToggles.forEach(function (btn) {
+      btn.setAttribute('aria-expanded', 'true');
+    });
     document.body.style.overflow = 'hidden';
   }
 
@@ -279,15 +284,19 @@ document.addEventListener('DOMContentLoaded', function () {
     discoverOverlay.classList.remove('is-open');
     discoverOverlay.setAttribute('aria-hidden', 'true');
     discoverBackdrop.classList.remove('is-visible');
-    discoverToggle.setAttribute('aria-expanded', 'false');
+    discoverToggles.forEach(function (btn) {
+      btn.setAttribute('aria-expanded', 'false');
+    });
     document.body.style.overflow = '';
     setTimeout(function () {
       discoverBackdrop.hidden = true;
     }, 250);
   }
 
-  if (discoverToggle && discoverOverlay && discoverBackdrop) {
-    discoverToggle.addEventListener('click', openDiscover);
+  if (discoverToggles.length && discoverOverlay && discoverBackdrop) {
+    discoverToggles.forEach(function (btn) {
+      btn.addEventListener('click', openDiscover);
+    });
     discoverClose.addEventListener('click', closeDiscover);
     discoverBackdrop.addEventListener('click', closeDiscover);
     discoverOverlay.querySelectorAll('a, .discover-overlay__link').forEach(function (link) {
