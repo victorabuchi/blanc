@@ -836,14 +836,15 @@ h1, h2, h3, h4 {
 .discover-overlay__links {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   padding: 24px 0;
 }
 
 .discover-overlay__link {
   font-family: "Helvetica Now Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  letter-spacing: 0.01em;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--black);
 }
 
