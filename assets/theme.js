@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.site-footer__links-title').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var col = btn.closest('.site-footer__links-col');
+      if (col) {
+        col.classList.toggle('is-open');
+      }
+    });
+  });
+
   var menuToggle = document.querySelector('.site-header__menu-toggle');
   var drawer = document.getElementById('mobile-nav-drawer');
   var overlay = document.getElementById('mobile-nav-overlay');

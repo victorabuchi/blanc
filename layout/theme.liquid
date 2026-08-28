@@ -299,36 +299,64 @@
 
     <div class="site-footer__links">
       <div class="site-footer__links-col">
-        <p class="site-footer__links-title">Contact us</p>
-        <a href="#" class="site-footer__links-link">Live chat<span class="site-footer__links-status">Offline</span></a>
-        <a href="#" class="site-footer__links-link">Call<span class="site-footer__links-status">Offline</span></a>
-        <a href="mailto:hello@frozenholm.com" class="site-footer__links-link">Email</a>
+        <button type="button" class="site-footer__links-title">
+          Contact us
+          <svg class="site-footer__links-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="site-footer__links-content">
+          <a href="#" class="site-footer__links-link">Live chat<span class="site-footer__links-status">Offline</span></a>
+          <a href="#" class="site-footer__links-link">Call<span class="site-footer__links-status">Offline</span></a>
+          <a href="mailto:hello@frozenholm.com" class="site-footer__links-link">Email</a>
+        </div>
       </div>
 
       <div class="site-footer__links-col">
-        <p class="site-footer__links-title">Help</p>
-        <a href="{{ routes.account_url }}" class="site-footer__links-link">Order status</a>
-        <a href="/pages/support" class="site-footer__links-link">Register a return</a>
-        <a href="/pages/support" class="site-footer__links-link">FAQs</a>
+        <button type="button" class="site-footer__links-title">
+          Help
+          <svg class="site-footer__links-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="site-footer__links-content">
+          <a href="{{ routes.account_url }}" class="site-footer__links-link">Order status</a>
+          <a href="/pages/support" class="site-footer__links-link">Register a return</a>
+          <a href="/pages/support" class="site-footer__links-link">FAQs</a>
+        </div>
       </div>
 
       <div class="site-footer__links-col">
-        <p class="site-footer__links-title">Shop</p>
-        <a href="/pages/new" class="site-footer__links-link">New</a>
-        <a href="/pages/combos" class="site-footer__links-link">Combos</a>
-        <a href="/pages/archive" class="site-footer__links-link">Archive</a>
+        <button type="button" class="site-footer__links-title">
+          Shop
+          <svg class="site-footer__links-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="site-footer__links-content">
+          <a href="/pages/new" class="site-footer__links-link">New</a>
+          <a href="/pages/combos" class="site-footer__links-link">Combos</a>
+          <a href="/pages/archive" class="site-footer__links-link">Archive</a>
+        </div>
       </div>
 
       <div class="site-footer__links-col">
-        <p class="site-footer__links-title">Company</p>
-        <a href="/pages/archive" class="site-footer__links-link">About</a>
-        <a href="/pages/social" class="site-footer__links-link">Social</a>
-        {%- if shop.privacy_policy -%}
-          <a href="{{ shop.privacy_policy.url }}" class="site-footer__links-link">Privacy policy</a>
-        {%- endif -%}
-        {%- if shop.terms_of_service -%}
-          <a href="{{ shop.terms_of_service.url }}" class="site-footer__links-link">Terms of service</a>
-        {%- endif -%}
+        <button type="button" class="site-footer__links-title">
+          Company
+          <svg class="site-footer__links-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="site-footer__links-content">
+          <a href="/pages/archive" class="site-footer__links-link">About</a>
+          <a href="/pages/social" class="site-footer__links-link">Social</a>
+          {%- if shop.privacy_policy -%}
+            <a href="{{ shop.privacy_policy.url }}" class="site-footer__links-link">Privacy policy</a>
+          {%- endif -%}
+          {%- if shop.terms_of_service -%}
+            <a href="{{ shop.terms_of_service.url }}" class="site-footer__links-link">Terms of service</a>
+          {%- endif -%}
+        </div>
       </div>
     </div>
 
