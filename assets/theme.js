@@ -1,4 +1,71 @@
 document.addEventListener('DOMContentLoaded', function () {
+  var contactToggles = document.querySelectorAll('.contact-widget-toggle');
+  var contactWidget = document.getElementById('contact-widget');
+  var contactBackdrop = document.getElementById('contact-widget-backdrop');
+  var contactLauncher = document.getElementById('contact-widget-launcher');
+  var contactClose = document.querySelector('.contact-widget__close');
+  var contactNext = document.querySelector('.contact-widget__next');
+
+  function openContact() {
+    contactWidget.classList.add('is-open');
+    contactWidget.setAttribute('aria-hidden', 'false');
+    contactBackdrop.hidden = false;
+    contactLauncher.classList.add('is-open');
+  }
+
+  function closeContact() {
+    contactWidget.classList.remove('is-open');
+    contactWidget.setAttribute('aria-hidden', 'true');
+    contactBackdrop.hidden = true;
+    contactLauncher.classList.remove('is-open');
+  }
+
+  if (contactWidget && contactBackdrop && contactLauncher) {
+    contactToggles.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (contactWidget.classList.contains('is-open')) {
+          closeContact();
+        } else {
+          openContact();
+        }
+      });
+    });
+
+    if (contactClose) {
+      contactClose.addEventListener('click', closeContact);
+    }
+    contactBackdrop.addEventListener('click', closeContact);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && contactWidget.classList.contains('is-open')) {
+        closeContact();
+      }
+    });
+
+    if (contactNext) {
+      contactNext.addEventListener('click', function () {
+        var step1 = contactWidget.querySelector('[data-step="1"]');
+        var step2 = contactWidget.querySelector('[data-step="2"]');
+        var nameInput = document.getElementById('contact-widget-name');
+        if (nameInput && !nameInput.value.trim()) {
+          nameInput.focus();
+          return;
+        }
+        if (step1 && step2) {
+          step1.hidden = true;
+          step2.hidden = false;
+          var emailInput = document.getElementById('contact-widget-email');
+          if (emailInput) {
+            emailInput.focus();
+          }
+        }
+      });
+    }
+
+    if (contactWidget.classList.contains('is-success')) {
+      openContact();
+    }
+  }
+
   document.querySelectorAll('.site-footer__links-title').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var col = btn.closest('.site-footer__links-col');
@@ -316,6 +383,76 @@ document.addEventListener('DOMContentLoaded', function () {
         closeDiscover();
       }
     });
+  }
+
+  var contactToggles = document.querySelectorAll('.contact-widget-toggle');
+  var contactWidget = document.getElementById('contact-widget');
+  var contactBackdrop = document.getElementById('contact-widget-backdrop');
+  var contactClose = document.querySelector('.contact-widget__close');
+  var contactLauncher = document.getElementById('contact-widget-launcher');
+  var contactNext = document.querySelector('.contact-widget__next');
+
+  function openContact() {
+    contactWidget.classList.add('is-open');
+    contactWidget.setAttribute('aria-hidden', 'false');
+    contactBackdrop.hidden = false;
+    if (contactLauncher) {
+      contactLauncher.classList.add('is-open');
+    }
+  }
+
+  function closeContact() {
+    contactWidget.classList.remove('is-open');
+    contactWidget.setAttribute('aria-hidden', 'true');
+    contactBackdrop.hidden = true;
+    if (contactLauncher) {
+      contactLauncher.classList.remove('is-open');
+    }
+  }
+
+  if (contactToggles.length && contactWidget && contactBackdrop) {
+    contactToggles.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (btn === contactLauncher && contactWidget.classList.contains('is-open')) {
+          closeContact();
+        } else {
+          openContact();
+        }
+      });
+    });
+    if (contactClose) {
+      contactClose.addEventListener('click', closeContact);
+    }
+    contactBackdrop.addEventListener('click', closeContact);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && contactWidget.classList.contains('is-open')) {
+        closeContact();
+      }
+    });
+
+    if (contactNext) {
+      contactNext.addEventListener('click', function () {
+        var step1 = contactWidget.querySelector('[data-step="1"]');
+        var step2 = contactWidget.querySelector('[data-step="2"]');
+        var nameInput = document.getElementById('contact-widget-name');
+        if (nameInput && !nameInput.value.trim()) {
+          nameInput.focus();
+          return;
+        }
+        if (step1 && step2) {
+          step1.hidden = true;
+          step2.hidden = false;
+          var emailInput = document.getElementById('contact-widget-email');
+          if (emailInput) {
+            emailInput.focus();
+          }
+        }
+      });
+    }
+
+    if (contactWidget.classList.contains('is-success')) {
+      openContact();
+    }
   }
 
   document.querySelectorAll('.product-card__swatch').forEach(function (swatch) {
