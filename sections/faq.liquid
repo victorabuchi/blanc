@@ -1,0 +1,89 @@
+<div class="page-banner">
+  <p class="page-banner__title">{{ section.settings.title }}</p>
+</div>
+
+<div class="faq">
+  {%- for block in section.blocks -%}
+    <div class="faq-item" {{ block.shopify_attributes }}>
+      <button type="button" class="faq-item__question">
+        {{ block.settings.question }}
+        <svg class="faq-item__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="faq-item__answer">{{ block.settings.answer }}</div>
+    </div>
+  {%- else -%}
+    <p class="faq__empty">No questions have been added yet.</p>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "FAQ"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question goes here?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Answer goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 24,
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Finland and EU orders ship within 5-10 working days. International orders take 7-15 working days, unless a pre-order ship date is given.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We have a 14-day return policy. Items must be unworn, unused, with tags attached, and in original packaging. Email support@frozenholm.com with your order number to start a return.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p>You'll receive a shipping confirmation email with a tracking link once your order ships. You can also check your order status from your account.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>Yes. It is the customer's responsibility to pay any import taxes or duties charged by their country.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

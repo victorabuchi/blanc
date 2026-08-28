@@ -66,6 +66,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  document.querySelectorAll('.faq-item__question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      if (item) {
+        item.classList.toggle('is-open');
+      }
+    });
+  });
+
   document.querySelectorAll('.site-footer__links-title').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var col = btn.closest('.site-footer__links-col');
