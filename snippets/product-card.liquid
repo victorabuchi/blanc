@@ -71,5 +71,10 @@
   <div class="product-card__info">
     <p class="product-card__name">{{ product.title }}</p>
     <p class="product-card__price">{{ product.price | money }}</p>
+    {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
+      <p class="product-card__unit-price">
+        {{ product.selected_or_first_available_variant.unit_price | money }}/{% if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 %}{{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}{% endif %}{{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+      </p>
+    {%- endif -%}
   </div>
 </a>
