@@ -295,6 +295,91 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  var cookieBanner = document.getElementById('cookie-banner');
+  var cookieBannerBackdrop = document.getElementById('cookie-banner-backdrop');
+  var cookieBannerAccept = document.getElementById('cookie-banner-accept');
+  var cookieBannerContinue = document.getElementById('cookie-banner-continue');
+  var cookieBannerSettings = document.getElementById('cookie-banner-settings');
+
+  function showCookieBanner() {
+    cookieBanner.hidden = false;
+    cookieBannerBackdrop.hidden = false;
+    requestAnimationFrame(function () {
+      cookieBanner.classList.add('is-visible');
+      cookieBannerBackdrop.classList.add('is-visible');
+    });
+  }
+
+  function hideCookieBanner() {
+    cookieBanner.classList.remove('is-visible');
+    cookieBannerBackdrop.classList.remove('is-visible');
+    setTimeout(function () {
+      cookieBanner.hidden = true;
+      cookieBannerBackdrop.hidden = true;
+    }, 250);
+  }
+
+  function saveCookieConsent(consent) {
+    try {
+      localStorage.setItem('blanc-cookie-consent', JSON.stringify(consent));
+    } catch (e) {}
+
+    if (
+      window.Shopify &&
+      window.Shopify.customerPrivacy &&
+      typeof window.Shopify.customerPrivacy.setTrackingConsent === 'function'
+    ) {
+      window.Shopify.customerPrivacy.setTrackingConsent({
+        analytics: !!consent.analytics,
+        marketing: !!consent.marketing,
+        preferences: !!consent.preferences,
+        sale_of_data: !!consent.marketing
+      }, function () {});
+    }
+  }
+
+  if (cookieBanner && cookieBannerBackdrop) {
+    var hasSavedConsent = true;
+    try {
+      hasSavedConsent = !!JSON.parse(localStorage.getItem('blanc-cookie-consent') || 'null');
+    } catch (e) {
+      hasSavedConsent = false;
+    }
+
+    if (!hasSavedConsent) {
+      showCookieBanner();
+    }
+
+    if (cookieBannerAccept) {
+      cookieBannerAccept.addEventListener('click', function () {
+        saveCookieConsent({ analytics: true, marketing: true, preferences: true });
+        document.querySelectorAll('[data-cookie-toggle]').forEach(function (input) {
+          input.checked = true;
+        });
+        hideCookieBanner();
+      });
+    }
+
+    if (cookieBannerContinue) {
+      cookieBannerContinue.addEventListener('click', function () {
+        saveCookieConsent({ analytics: false, marketing: false, preferences: false });
+        document.querySelectorAll('[data-cookie-toggle]').forEach(function (input) {
+          input.checked = false;
+        });
+        hideCookieBanner();
+      });
+    }
+
+    if (cookieBannerSettings) {
+      cookieBannerSettings.addEventListener('click', function () {
+        hideCookieBanner();
+        if (cookieToggle) {
+          cookieToggle.click();
+        }
+      });
+    }
+  }
+
   var locationToggles = document.querySelectorAll('.site-footer__location-toggle, .location-overlay-toggle');
   var locationOverlay = document.getElementById('location-overlay');
   var locationBackdrop = document.getElementById('location-overlay-backdrop');

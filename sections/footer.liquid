@@ -118,6 +118,23 @@
   </div>
 </footer>
 
+<div class="cookie-banner-backdrop" id="cookie-banner-backdrop" hidden></div>
+<div class="cookie-banner" id="cookie-banner" hidden>
+  <p class="cookie-banner__title">{{ 'general.cookie_banner.title' | t }}</p>
+  <div class="cookie-banner__body">
+    <p class="cookie-banner__text">{{ 'general.cookie_banner.text' | t }}</p>
+    <button type="button" class="cookie-banner__continue" id="cookie-banner-continue">
+      {{ 'general.cookie_banner.continue' | t }}
+    </button>
+    <button type="button" class="cookie-banner__settings" id="cookie-banner-settings">
+      {{ 'general.cookie_banner.settings' | t }}
+    </button>
+    <button type="button" class="cookie-banner__accept" id="cookie-banner-accept">
+      {{ 'general.cookie_banner.accept' | t }}
+    </button>
+  </div>
+</div>
+
 <div class="cookie-overlay-backdrop" id="cookie-overlay-backdrop" hidden></div>
 <div class="cookie-overlay" id="cookie-overlay" aria-hidden="true">
   <div class="cookie-overlay__header">

@@ -1,7 +1,16 @@
 {
   "general": {
     "search": {
-      "search": "Search"
+      "search": "Search",
+      "suggestions": "Suggestions",
+      "suggested_products": "Suggested products"
+    },
+    "cookie_banner": {
+      "title": "Your cookie settings",
+      "text": "By clicking \"Accept all cookies\", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. To adjust your preferences or withdraw consent of cookies at any time, click on \"Cookie settings\" below or at the bottom of any page.",
+      "continue": "Continue without accepting",
+      "settings": "Cookie settings",
+      "accept": "Accept all cookies"
     },
     "password": {
       "password_field": "Password",
@@ -41,7 +50,13 @@
   "collections": {
     "general": {
       "title": "Collections",
-      "no_matches": "No products found in this collection"
+      "no_matches": "No products found in this collection",
+      "item_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      },
+      "apply": "Apply",
+      "clear_filters": "Clear filters"
     }
   },
   "404": {
