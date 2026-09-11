@@ -40,6 +40,15 @@
                 {{ product.selected_or_first_available_variant.compare_at_price | money }}
               </s>
             </p>
+            <p
+              class="product__unit-price"
+              data-unit-price
+              {%- unless product.selected_or_first_available_variant.unit_price_measurement %} hidden{% endunless %}
+            >
+              {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
+                {{ product.selected_or_first_available_variant.unit_price | money }}/{% if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 %}{{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}{% endif %}{{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+              {%- endif -%}
+            </p>
 
           {%- when 'piece_number' -%}
             <p class="product__label" {{ block.shopify_attributes }}>{{ 'products.product.piece_number' | t }}</p>

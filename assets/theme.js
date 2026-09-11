@@ -585,6 +585,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var variantInput = form.querySelector('[data-variant-id]');
     var priceEl = form.querySelector('[data-price]');
     var comparePriceEl = form.querySelector('[data-compare-price]');
+    var unitPriceEl = form.querySelector('[data-unit-price]');
     var addToCartBtn = form.querySelector('[data-add-to-cart]');
     var addToCartText = form.querySelector('[data-add-to-cart-text]');
     var productImage = wrapper.querySelector('[data-product-image] img');
@@ -617,6 +618,15 @@ document.addEventListener('DOMContentLoaded', function () {
         var onSale = variant && variant.compare_at_price && variant.compare_at_price > variant.price;
         comparePriceEl.hidden = !onSale;
         if (onSale) comparePriceEl.textContent = formatMoney(variant.compare_at_price);
+      }
+
+      if (unitPriceEl) {
+        var measurement = variant && variant.unit_price_measurement;
+        unitPriceEl.hidden = !measurement;
+        if (measurement) {
+          var referenceValue = measurement.reference_value === 1 ? '' : measurement.reference_value;
+          unitPriceEl.textContent = formatMoney(variant.unit_price) + '/' + referenceValue + measurement.reference_unit;
+        }
       }
 
       var available = !!(variant && variant.available);
