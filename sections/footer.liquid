@@ -1,0 +1,286 @@
+<footer class="site-footer">
+  <div class="site-footer__promo">
+    <div class="site-footer__mailing">
+      <p class="site-footer__mailing-title">Newsletter</p>
+      <p class="site-footer__mailing-subtitle">Receive news about Blanc drops, collabs and sales.</p>
+      {% form 'customer', id: 'footer-newsletter-form', class: 'site-footer__mailing-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="site-footer__mailing-field">
+          <input
+            type="email"
+            id="footer-newsletter-email"
+            name="contact[email]"
+            class="site-footer__mailing-input"
+            placeholder=" "
+            required
+          >
+          <div class="site-footer__mailing-row">
+            <label for="footer-newsletter-email" class="site-footer__mailing-label">Email</label>
+            <button type="submit" class="site-footer__mailing-submit">Sign up</button>
+          </div>
+        </div>
+      {% endform %}
+    </div>
+
+    <div class="site-footer__promo-item">
+      <p class="site-footer__promo-title">Free shipping &amp; returns</p>
+      <p class="site-footer__promo-text">Fast delivery and easy returns on all orders.</p>
+    </div>
+
+    <div class="site-footer__promo-item">
+      <p class="site-footer__promo-title">Secure checkout</p>
+      <p class="site-footer__promo-text">Encrypted payments through Shopify's secure checkout.</p>
+    </div>
+  </div>
+
+  <div class="site-footer__links">
+    <div class="site-footer__links-col">
+      <button type="button" class="site-footer__links-title">
+        Contact us
+        <svg class="site-footer__links-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="site-footer__links-content">
+        <button type="button" class="site-footer__links-link contact-widget-toggle" aria-controls="contact-widget">Message us</button>
+        <a href="tel:+15555550100" class="site-footer__links-link">Call</a>
+        <a href="mailto:hello@example.com" class="site-footer__links-link">Email</a>
+      </div>
+    </div>
+
+    <div class="site-footer__links-col">
+      <button type="button" class="site-footer__links-title">
+        Help
+        <svg class="site-footer__links-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="site-footer__links-content">
+        <a href="{{ routes.account_url }}" class="site-footer__links-link">Order status</a>
+        <a href="/pages/support" class="site-footer__links-link">Register a return</a>
+        <a href="/pages/faq" class="site-footer__links-link">FAQs</a>
+      </div>
+    </div>
+
+    <div class="site-footer__links-col">
+      <button type="button" class="site-footer__links-title">
+        Shop
+        <svg class="site-footer__links-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="site-footer__links-content">
+        <a href="/pages/new" class="site-footer__links-link">New</a>
+        <a href="/pages/combos" class="site-footer__links-link">Combos</a>
+        <a href="/pages/archive" class="site-footer__links-link">Archive</a>
+      </div>
+    </div>
+
+    <div class="site-footer__links-col">
+      <button type="button" class="site-footer__links-title">
+        Company
+        <svg class="site-footer__links-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="site-footer__links-content">
+        <a href="/pages/archive" class="site-footer__links-link">About</a>
+        <a href="/pages/social" class="site-footer__links-link">Social</a>
+        {%- if shop.privacy_policy -%}
+          <a href="{{ shop.privacy_policy.url }}" class="site-footer__links-link">Privacy policy</a>
+        {%- endif -%}
+        {%- if shop.terms_of_service -%}
+          <a href="{{ shop.terms_of_service.url }}" class="site-footer__links-link">Terms of service</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="site-footer__bottom-row">
+      <span class="site-footer__copyright">&copy; 2026 {{ shop.name | upcase }}</span>
+
+      <div class="site-footer__social">
+        <a href="{{ settings.social_instagram_link | default: '#' }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="{{ settings.social_tiktok_link | default: '#' }}" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="{{ settings.social_x_link | default: '#' }}" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="{{ settings.social_facebook_link | default: '#' }}" target="_blank" rel="noopener noreferrer">Facebook</a>
+      </div>
+
+      <button type="button" class="site-footer__location-toggle" aria-controls="location-overlay">
+        Shipping to {{ localization.country.name | default: 'Finland' | upcase }} ({{ localization.language.endonym_name | default: 'English' | upcase }})
+      </button>
+    </div>
+
+    <div class="site-footer__bottom-row">
+      <button type="button" class="site-footer__cookie-toggle" aria-controls="cookie-overlay">Cookie settings</button>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-overlay-backdrop" id="cookie-overlay-backdrop" hidden></div>
+<div class="cookie-overlay" id="cookie-overlay" aria-hidden="true">
+  <div class="cookie-overlay__header">
+    <span class="cookie-overlay__title">Your cookie settings</span>
+    <button type="button" class="cookie-overlay__close" aria-label="Close cookie settings">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+      stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+      stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="cookie-overlay__body">
+    <h2 class="cookie-overlay__heading">Cookie settings</h2>
+    <p class="cookie-overlay__text">
+      When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies.
+      This information might be about you, your preferences or your device and is mostly used to make the site work
+      as you expect it to. Because we respect your right to privacy, you can choose not to allow some types of
+      cookies. Blocking some types of cookies may impact your experience of the site and the services we are able
+      to offer.
+    </p>
+
+    <h2 class="cookie-overlay__heading">Manage consent preferences</h2>
+
+    <div class="cookie-overlay__row">
+      <span class="cookie-overlay__row-label">Performance cookies</span>
+      <label class="cookie-overlay__switch">
+        <input type="checkbox" data-cookie-toggle="analytics" checked>
+        <span class="cookie-overlay__switch-track"></span>
+      </label>
+    </div>
+
+    <div class="cookie-overlay__row">
+      <span class="cookie-overlay__row-label">Targeting cookies</span>
+      <label class="cookie-overlay__switch">
+        <input type="checkbox" data-cookie-toggle="marketing" checked>
+        <span class="cookie-overlay__switch-track"></span>
+      </label>
+    </div>
+
+    <div class="cookie-overlay__row">
+      <span class="cookie-overlay__row-label">Strictly necessary cookies</span>
+      <span class="cookie-overlay__row-static">Always active</span>
+    </div>
+
+    <div class="cookie-overlay__row">
+      <span class="cookie-overlay__row-label">Functional cookies</span>
+      <label class="cookie-overlay__switch">
+        <input type="checkbox" data-cookie-toggle="preferences" checked>
+        <span class="cookie-overlay__switch-track"></span>
+      </label>
+    </div>
+
+    <button type="button" class="cookie-overlay__confirm">Confirm my choices</button>
+  </div>
+</div>
+
+<div class="location-overlay-backdrop" id="location-overlay-backdrop" hidden></div>
+<div class="location-overlay" id="location-overlay" aria-hidden="true">
+  <div class="location-overlay__header">
+    <span class="location-overlay__title">Change location</span>
+    <button type="button" class="location-overlay__close" aria-label="Close change location">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+      stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+      stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="location-overlay__body">
+    <p class="location-overlay__text">
+      You are currently shipping to {{ localization.country.name | default: 'Finland' }} and your order will be
+      billed in {{ localization.country.currency.iso_code | default: 'EUR' }}.
+    </p>
+
+    {%- if localization.available_countries.size > 1 -%}
+      <p class="location-overlay__label">Shipping location</p>
+      <input type="search" class="location-overlay__search" id="location-search" placeholder="Search locations" autocomplete="off">
+
+      {% form 'localization', id: 'footer-country-form' %}
+        <div class="location-overlay__list" id="location-country-list">
+          {%- for country in localization.available_countries -%}
+            <button
+              type="submit"
+              name="country_code"
+              value="{{ country.iso_code }}"
+              class="location-overlay__item{% if country.iso_code == localization.country.iso_code %} is-active{% endif %}"
+              data-country-name="{{ country.name | escape }}"
+            >
+              {{ country.name }} ({{ country.currency.iso_code }})
+            </button>
+          {%- endfor -%}
+        </div>
+      {% endform %}
+    {%- endif -%}
+  </div>
+</div>
+
+<div class="contact-widget-backdrop" id="contact-widget-backdrop" hidden></div>
+<div class="contact-widget{% if form.posted_successfully? %} is-success{% endif %}" id="contact-widget" aria-hidden="true">
+  <div class="contact-widget__header">
+    <span class="contact-widget__title">Contact us</span>
+    <button type="button" class="contact-widget__close" aria-label="Close contact form">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+      stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+      stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="contact-widget__body">
+    {%- if form.posted_successfully? -%}
+      <p class="contact-widget__success">Thanks — we've received your message and will reply within 1 business day.</p>
+    {%- else -%}
+      {% form 'contact', class: 'contact-widget__form' %}
+        {%- if form.errors -%}
+          <div class="contact-widget__error">{{ form.errors | default_errors }}</div>
+        {%- endif -%}
+
+        <div class="contact-widget__step" data-step="1">
+          <label class="contact-widget__label" for="contact-widget-name">Name</label>
+          <input type="text" id="contact-widget-name" name="contact[name]" class="contact-widget__input" value="{{ form.name }}" required>
+          <div class="contact-widget__footer">
+            <span class="contact-widget__step-count">1 of 2</span>
+            <button type="button" class="contact-widget__next">Next</button>
+          </div>
+        </div>
+
+        <div class="contact-widget__step" data-step="2" hidden>
+          <label class="contact-widget__label" for="contact-widget-email">Email</label>
+          <input type="email" id="contact-widget-email" name="contact[email]" class="contact-widget__input" value="{{ form.email }}" required>
+          <label class="contact-widget__label" for="contact-widget-message">Message</label>
+          <textarea id="contact-widget-message" name="contact[body]" class="contact-widget__textarea" rows="4" required>{{ form.body }}</textarea>
+          <div class="contact-widget__footer">
+            <span class="contact-widget__step-count">2 of 2</span>
+            <button type="submit" class="contact-widget__send">Send</button>
+          </div>
+        </div>
+      {% endform %}
+    {%- endif -%}
+  </div>
+</div>
+
+<button type="button" class="contact-widget-launcher contact-widget-toggle" id="contact-widget-launcher" aria-controls="contact-widget" aria-label="Contact us">
+  <svg class="contact-widget-launcher__icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none"
+  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.5 8.5 0 01-8.5 8.5 8.38 8.38 0 01-4-1L3 20l1.3-3.9a8.5 8.5 0 118-15.6 8.5 8.5 0 018.7 8.7z"/>
+  </svg>
+  <svg class="contact-widget-launcher__icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none"
+  stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 12 15 18 9"/>
+  </svg>
+</button>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

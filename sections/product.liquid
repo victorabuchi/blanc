@@ -1,6 +1,6 @@
-<div class="product">
+<div class="product" data-section-id="{{ section.id }}">
   <div class="product__image-col">
-    <div class="product__image">
+    <div class="product__image" data-product-image>
       {%- if product.selected_or_first_available_variant.featured_image -%}
         <img
           src="{{ product.selected_or_first_available_variant.featured_image | image_url: width: 1200 }}"
@@ -20,52 +20,180 @@
   </div>
 
   <div class="product__info-col">
-    <p class="product__name">{{ product.title }}</p>
-    <p class="product__price">{{ product.selected_or_first_available_variant.price | default: product.price | money }}</p>
+    {% form 'product', product, id: 'product-form-' | append: section.id, class: 'product__form', data-product-form: '' %}
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
 
-    <p class="product__label">{{ 'products.product.piece_number' | t }}</p>
-    <p class="product__piece">
-      {{ product.metafields.custom.piece_number | default: '001' }} / {{ product.metafields.custom.total_pieces | default: settings.pieces_per_drop | default: '099' }}
-    </p>
+          {%- when 'title' -%}
+            <p class="product__name" {{ block.shopify_attributes }}>{{ product.title }}</p>
 
-    {% form 'product', product %}
-      {%- if product.has_only_default_variant == false -%}
-        <p class="product__label">{{ 'products.product.size' | t }}</p>
-        <div class="product__sizes">
-          {%- for variant in product.variants -%}
-            <button
-              type="button"
-              class="size-btn{% if variant == product.selected_or_first_available_variant %} is-active{% endif %}{% unless variant.available %} is-sold-out{% endunless %}"
-              data-variant-id="{{ variant.id }}"
-              {% unless variant.available %}disabled{% endunless %}
-            >
-              {{ variant.title }}
+          {%- when 'vendor' -%}
+            {%- if product.vendor != blank -%}
+              <p class="product__vendor" {{ block.shopify_attributes }}>{{ product.vendor }}</p>
+            {%- endif -%}
+
+          {%- when 'price' -%}
+            <p class="product__price" {{ block.shopify_attributes }}>
+              <span data-price>{{ product.selected_or_first_available_variant.price | default: product.price | money }}</span>
+              <s class="product__price-compare" data-compare-price {% unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}hidden{% endunless %}>
+                {{ product.selected_or_first_available_variant.compare_at_price | money }}
+              </s>
+            </p>
+
+          {%- when 'piece_number' -%}
+            <p class="product__label" {{ block.shopify_attributes }}>{{ 'products.product.piece_number' | t }}</p>
+            <p class="product__piece">
+              {{ product.metafields.custom.piece_number | default: '001' }} / {{ product.metafields.custom.total_pieces | default: settings.pieces_per_drop | default: '099' }}
+            </p>
+
+          {%- when 'variant_picker' -%}
+            {%- if product.has_only_default_variant == false -%}
+              <div class="product__options" data-product-options {{ block.shopify_attributes }}>
+                {%- for option in product.options_with_values -%}
+                  {%- assign option_index = forloop.index0 -%}
+                  <p class="product__label">{{ option.name }}</p>
+                  <div class="product__sizes" data-option-index="{{ option_index }}">
+                    {%- for value in option.values -%}
+                      {%- liquid
+                        assign option_available = false
+                        for variant in product.variants
+                          if variant.options[option_index] == value and variant.available
+                            assign option_available = true
+                          endif
+                        endfor
+                      -%}
+                      <button
+                        type="button"
+                        class="size-btn{% if value == option.selected_value %} is-active{% endif %}{% unless option_available %} is-sold-out{% endunless %}"
+                        data-option-value="{{ value | escape }}"
+                        {% unless option_available %}disabled{% endunless %}
+                      >
+                        {{ value }}
+                      </button>
+                    {%- endfor -%}
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+          {%- when 'quantity_selector' -%}
+            <div class="product__quantity" {{ block.shopify_attributes }}>
+              <label class="product__label" for="product-quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+              <input type="number" id="product-quantity-{{ section.id }}" name="quantity" class="product__quantity-input" value="1" min="1" inputmode="numeric">
+            </div>
+
+          {%- when 'buy_buttons' -%}
+            <button type="submit" class="product__submit" data-add-to-cart {% unless product.available %}disabled{% endunless %} {{ block.shopify_attributes }}>
+              <span data-add-to-cart-text>
+                {%- if product.available -%}
+                  {{ 'products.product.add_to_bag' | t }}
+                {%- else -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- endif -%}
+              </span>
             </button>
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
 
-      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          {%- when 'description' -%}
+            <hr class="product__divider">
+            <p class="product__section-title">{{ 'products.product.description' | t }}</p>
+            <div class="product__description" {{ block.shopify_attributes }}>{{ product.description }}</div>
 
-      <button type="submit" class="product__submit" {% unless product.available %}disabled{% endunless %}>
-        {%- if product.available -%}
-          {{ 'products.product.add_to_bag' | t }}
-        {%- else -%}
-          {{ 'products.product.sold_out' | t }}
-        {%- endif -%}
-      </button>
+          {%- when 'liquid' -%}
+            <div class="product__custom-liquid" {{ block.shopify_attributes }}>{{ block.settings.custom_liquid }}</div>
+
+          {%- when '@app' -%}
+            {% render block %}
+
+        {%- endcase -%}
+      {%- endfor -%}
+
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-id>
     {% endform %}
-
-    <hr class="product__divider">
-
-    <p class="product__section-title">{{ 'products.product.description' | t }}</p>
-    <div class="product__description">{{ product.description }}</div>
   </div>
 </div>
+
+<script type="application/json" data-product-json>
+  {{ product | json }}
+</script>
 
 {% schema %}
 {
   "name": "Product",
-  "settings": []
+  "settings": [],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "vendor",
+      "name": "Vendor",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "piece_number",
+      "name": "Piece number",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant picker",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "quantity_selector",
+      "name": "Quantity selector",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Buy buttons",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "liquid",
+      "name": "Custom Liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Liquid code"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "title" },
+      { "type": "price" },
+      { "type": "piece_number" },
+      { "type": "variant_picker" },
+      { "type": "quantity_selector" },
+      { "type": "buy_buttons" },
+      { "type": "description" }
+    ]
+  }
 }
 {% endschema %}

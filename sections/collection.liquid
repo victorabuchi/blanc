@@ -2,19 +2,21 @@
   <p class="section-heading__title">{{ collection.title }}</p>
 </div>
 
-<div class="product-grid">
-  {%- for product in collection.products -%}
-    {%- render 'product-card', product: product -%}
-  {%- else -%}
-    <p>{{ 'collections.general.no_matches' | t }}</p>
-  {%- endfor -%}
-</div>
-
-{% if paginate.pages > 1 %}
-  <div class="pagination">
-    {{ paginate | default_pagination }}
+{%- paginate collection.products by 24 -%}
+  <div class="product-grid">
+    {%- for product in collection.products -%}
+      {%- render 'product-card', product: product -%}
+    {%- else -%}
+      <p>{{ 'collections.general.no_matches' | t }}</p>
+    {%- endfor -%}
   </div>
-{% endif %}
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination">
+      {{ paginate | default_pagination }}
+    </div>
+  {% endif %}
+{%- endpaginate -%}
 
 {% schema %}
 {
