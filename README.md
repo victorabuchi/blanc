@@ -1,4 +1,4 @@
-# Nord
+# blanc
 
 A Shopify Online Store 2.0 theme built for minimalist streetwear and
 label-style stores: limited drops, combos, collabs and an archive of past
