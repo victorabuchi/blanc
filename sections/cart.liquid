@@ -29,12 +29,20 @@
             {%- unless item.product.has_only_default_variant -%}
               <p class="cart-item__variant">{{ item.variant.title }}</p>
             {%- endunless -%}
-            <p class="cart-item__price">{{ item.final_price | money }}</p>
+            <p class="cart-item__price">
+              {%- if item.original_price != item.final_price -%}
+                <s class="cart-item__price-original">{{ item.original_price | money }}</s>
+              {%- endif -%}
+              {{ item.final_price | money }}
+            </p>
             {%- if item.unit_price_measurement -%}
               <p class="cart-item__unit-price">
                 {{ item.unit_price | money }}/{% if item.unit_price_measurement.reference_value != 1 %}{{ item.unit_price_measurement.reference_value }}{% endif %}{{ item.unit_price_measurement.reference_unit }}
               </p>
             {%- endif -%}
+            {%- for discount in item.discounts -%}
+              <p class="cart-item__discount">{{ discount.title }} (&minus;{{ discount.amount | money }})</p>
+            {%- endfor -%}
 
             <div class="cart-item__controls">
               <input
@@ -49,12 +57,26 @@
             </div>
           </div>
 
-          <p class="cart-item__line-total">{{ item.final_line_price | money }}</p>
+          <p class="cart-item__line-total">
+            {%- if item.original_line_price != item.final_line_price -%}
+              <s class="cart-item__line-total-original">{{ item.original_line_price | money }}</s>
+            {%- endif -%}
+            {{ item.final_line_price | money }}
+          </p>
         </div>
       {%- endfor -%}
     </div>
 
     <div class="cart-summary">
+      {%- if cart.cart_level_discount_applications.size > 0 -%}
+        {%- for discount_application in cart.cart_level_discount_applications -%}
+          <div class="cart-summary__row cart-summary__row--discount">
+            <span>{{ discount_application.title }}</span>
+            <span>&minus;{{ discount_application.total_allocated_amount | money }}</span>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+
       <div class="cart-summary__row">
         <span>{{ 'general.cart.subtotal' | t }}</span>
         <span>{{ cart.total_price | money }}</span>
