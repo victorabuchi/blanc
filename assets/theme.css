@@ -2149,6 +2149,429 @@ h1, h2, h3, h4 {
   color: var(--color-text);
 }
 
+/* ============ SEARCH PAGE ============ */
+.search-page {
+  padding: 24px 32px 40px;
+}
+
+.search-page__form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--color-text);
+  padding-bottom: 12px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.search-page__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  background: transparent;
+  font-family: inherit;
+}
+
+.search-page__input::placeholder {
+  color: var(--color-secondary-text);
+}
+
+.search-page__submit {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.search-page__empty {
+  padding: 40px 32px 80px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--color-secondary-text);
+}
+
+.search-page__count {
+  padding: 24px 32px 8px;
+  font-size: 11px;
+  color: var(--color-secondary-text);
+}
+
+.search-page__other {
+  padding: 8px 32px 56px;
+}
+
+.search-page__row {
+  display: block;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.search-page__row-type {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-secondary-text);
+  margin-bottom: 4px;
+}
+
+.search-page__row-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.search-page__row-excerpt {
+  font-size: 12px;
+  color: var(--color-secondary-text);
+  line-height: 1.7;
+}
+
+/* ============ COLLECTION LIST ============ */
+.collection-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 24px;
+  padding: 8px 32px 56px;
+}
+
+.collection-list__item {
+  display: block;
+}
+
+.collection-list__image {
+  aspect-ratio: 3 / 2;
+  background: var(--color-secondary-background);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.collection-list__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-list__title {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ============ BLOG LIST ============ */
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 24px;
+  padding: 8px 32px 56px;
+}
+
+.blog-list__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--color-secondary-text);
+  padding: 40px 0;
+}
+
+.blog-list__item {
+  display: block;
+}
+
+.blog-list__image {
+  aspect-ratio: 4 / 3;
+  background: var(--color-secondary-background);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.blog-list__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-list__date {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary-text);
+  margin-bottom: 6px;
+}
+
+.blog-list__title {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.blog-list__excerpt {
+  font-size: 12px;
+  color: var(--color-secondary-text);
+  line-height: 1.7;
+}
+
+/* ============ ARTICLE ============ */
+.article {
+  max-width: 680px;
+  padding: 24px 40px 96px;
+  margin: 0 auto;
+}
+
+.article__back {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 24px;
+}
+
+.article__image {
+  margin-bottom: 32px;
+}
+
+.article__content {
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.article-comments {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.article-comments__title {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+
+.article-comments__item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-comments__author {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.article-comments__date {
+  font-size: 11px;
+  color: var(--color-secondary-text);
+  margin-bottom: 8px;
+}
+
+.article-comments__body {
+  font-size: 12.5px;
+  line-height: 1.8;
+}
+
+.article-comments__form {
+  margin-top: 32px;
+}
+
+.article-comments__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.article-comments__input,
+.article-comments__textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--color-text);
+  outline: none;
+  margin-bottom: 16px;
+  font-family: inherit;
+}
+
+.article-comments__textarea {
+  resize: vertical;
+}
+
+.article-comments__input:focus,
+.article-comments__textarea:focus {
+  border-color: var(--color-accent);
+}
+
+.article-comments__submit {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 24px;
+  font-size: 13px;
+}
+
+.article-comments__submit:hover {
+  opacity: 0.85;
+}
+
+.article-comments__success {
+  font-size: 12.5px;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+.article-comments__error {
+  background: var(--color-error-background);
+  color: var(--color-error-text);
+  font-size: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* ============ PAGE CONTACT ============ */
+.page-contact {
+  max-width: 480px;
+  padding: 24px 40px 96px;
+  margin: 0 auto;
+}
+
+.page-contact__intro {
+  font-size: 12.5px;
+  line-height: 1.9;
+  margin-bottom: 32px;
+}
+
+.page-contact__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.page-contact__input,
+.page-contact__textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--color-text);
+  outline: none;
+  margin-bottom: 20px;
+  font-family: inherit;
+}
+
+.page-contact__textarea {
+  resize: vertical;
+}
+
+.page-contact__input:focus,
+.page-contact__textarea:focus {
+  border-color: var(--color-accent);
+}
+
+.page-contact__submit {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 32px;
+  font-size: 13px;
+}
+
+.page-contact__submit:hover {
+  opacity: 0.85;
+}
+
+.page-contact__success {
+  font-size: 13px;
+}
+
+.page-contact__error {
+  background: var(--color-error-background);
+  color: var(--color-error-text);
+  font-size: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* ============ PASSWORD PAGE ============ */
+.password-page {
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 96px 32px;
+  text-align: center;
+}
+
+.password-page__logo img {
+  max-height: 24px;
+  margin: 0 auto 32px;
+}
+
+.password-page__message {
+  font-size: 12.5px;
+  line-height: 1.8;
+  color: var(--color-secondary-text);
+  margin-bottom: 32px;
+}
+
+.password-page__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.password-page__input {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--color-text);
+  outline: none;
+  margin-bottom: 20px;
+  font-family: inherit;
+}
+
+.password-page__input:focus {
+  border-color: var(--color-accent);
+}
+
+.password-page__submit {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 32px;
+  font-size: 13px;
+  width: 100%;
+}
+
+.password-page__submit:hover {
+  opacity: 0.85;
+}
+
+.password-page__error {
+  background: var(--color-error-background);
+  color: var(--color-error-text);
+  font-size: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
   .product-grid {
@@ -2177,6 +2600,18 @@ h1, h2, h3, h4 {
     grid-template-columns: repeat(2, 1fr);
     gap: 28px 16px;
     padding: 28px 16px 48px;
+  }
+
+  .collection-list,
+  .blog-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+    padding: 8px 16px 48px;
+  }
+
+  .article,
+  .page-contact {
+    padding: 24px 20px 64px;
   }
 
   .site-header {

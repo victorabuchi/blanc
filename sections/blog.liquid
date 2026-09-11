@@ -1,0 +1,39 @@
+<div class="page-banner">
+  <p class="page-banner__title">{{ blog.title }}</p>
+</div>
+
+{%- paginate blog.articles by 12 -%}
+  <div class="blog-list">
+    {%- for article in blog.articles -%}
+      <a href="{{ article.url }}" class="blog-list__item">
+        <div class="blog-list__image">
+          {%- if article.image -%}
+            <img
+              src="{{ article.image | image_url: width: 800 }}"
+              alt="{{ article.image.alt | default: article.title | escape }}"
+              loading="lazy"
+              width="800"
+              height="{{ 800 | divided_by: article.image.aspect_ratio }}"
+            >
+          {%- endif -%}
+        </div>
+        <p class="blog-list__date">{{ article.published_at | date: '%B %d, %Y' }}</p>
+        <p class="blog-list__title">{{ article.title }}</p>
+        <p class="blog-list__excerpt">{{ article.excerpt_or_content | strip_html | truncatewords: 40 }}</p>
+      </a>
+    {%- else -%}
+      <p class="blog-list__empty">{{ 'blogs.general.no_articles' | t }}</p>
+    {%- endfor -%}
+  </div>
+
+  {%- if paginate.pages > 1 -%}
+    <div class="pagination">{{ paginate | default_pagination }}</div>
+  {%- endif -%}
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": []
+}
+{% endschema %}
