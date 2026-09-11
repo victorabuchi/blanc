@@ -7,7 +7,8 @@
   <div class="support-section">
     <p class="support-section-title">{{ section.settings.shipping_title }}</p>
     <ul class="support-list">
-      {%- for line in section.settings.shipping_list | newline_to_br | split: '<br />' -%}
+      {%- assign shipping_lines = section.settings.shipping_list | newline_to_br | split: '<br />' -%}
+      {%- for line in shipping_lines -%}
         {%- if line != blank -%}
           <li>{{ line | strip }}</li>
         {%- endif -%}
