@@ -157,7 +157,7 @@
   </form>
 
   <div class="search-overlay__suggestions">
-    <p class="search-overlay__suggestions-title">Suggestions</p>
+    <p class="search-overlay__suggestions-title">{{ 'general.search.suggestions' | t }}</p>
     <ul class="search-overlay__suggestions-list">
       <li><a href="/pages/new">New</a></li>
       <li><a href="/pages/combos">Combos</a></li>
@@ -166,6 +166,30 @@
       <li><button type="button" class="help-overlay-toggle" aria-controls="help-overlay">Help</button></li>
     </ul>
   </div>
+
+  {%- if section.settings.suggested_products_collection != blank -%}
+    {%- assign suggested_collection = collections[section.settings.suggested_products_collection] -%}
+    {%- if suggested_collection.products.size > 0 -%}
+      <div class="search-overlay__products">
+        <p class="search-overlay__products-title">{{ 'general.search.suggested_products' | t }}</p>
+        <div class="search-overlay__products-grid">
+          {%- for product in suggested_collection.products limit: 8 -%}
+            <a href="{{ product.url }}" class="search-overlay__product">
+              {%- if product.featured_image -%}
+                <img
+                  src="{{ product.featured_image | image_url: width: 400 }}"
+                  alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                  loading="lazy"
+                  width="400"
+                  height="{{ 400 | divided_by: product.featured_image.aspect_ratio }}"
+                >
+              {%- endif -%}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
 </div>
 
 <div class="help-overlay-backdrop" id="help-overlay-backdrop" hidden></div>
@@ -240,6 +264,13 @@
 {% schema %}
 {
   "name": "Header",
-  "settings": []
+  "settings": [
+    {
+      "type": "collection",
+      "id": "suggested_products_collection",
+      "label": "Suggested products",
+      "info": "Shown in the search overlay before a visitor types a query."
+    }
+  ]
 }
 {% endschema %}
