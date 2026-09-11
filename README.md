@@ -1,14 +1,14 @@
-# Frozenholm
+# Nord
 
-Shopify Online Store 2.0 theme for **Frozenholm**, a minimalist streetwear
-label built around limited drops, combos, collabs and an archive of past
+A Shopify Online Store 2.0 theme built for minimalist streetwear and
+label-style stores: limited drops, combos, collabs and an archive of past
 seasons. The visual language borrows from Acne Studios and Balenciaga:
 black-on-white, bold condensed type for headings, blue link-style product
 titles, and edge-to-edge product grids.
 
 ## About
 
-Frozenholm ships in small, numbered drops rather than a continuous
+Nord is built around small, numbered drops rather than a continuous
 catalogue. The site is structured around that: a **New** page for the
 current drop, **Combos** for curated outfits, **Collabs** for partner
 releases, and an **Archive** documenting past drops and the brand's
@@ -30,7 +30,7 @@ way of the product.
   hover swatches for products with a Color/Colour option.
 - `assets/theme.css`, `assets/theme.js` — all styling and behavior lives
   in these two files (no build step).
-- `assets/frozenholm-logo.png`, `assets/favicon.png` — the wordmark and
+- `assets/nord-logo.png`, `assets/favicon.png` — the wordmark and
   favicon, cropped from the same source artwork.
 
 ## Fonts
@@ -64,3 +64,7 @@ against a development store:
 ```
 shopify theme dev
 ```
+
+## Support
+
+Questions about the theme code: contact@victorabuchi.com

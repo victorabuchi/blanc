@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Nord",
+    "theme_author": "Victor Abuchi",
+    "theme_version": "1.0.0",
+    "theme_support_email": "contact@victorabuchi.com"
+  }
+]

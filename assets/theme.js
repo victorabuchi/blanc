@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
     cookieBackdrop.addEventListener('click', closeCookie);
 
     try {
-      var savedConsent = JSON.parse(localStorage.getItem('frozenholm-cookie-consent') || 'null');
+      var savedConsent = JSON.parse(localStorage.getItem('nord-cookie-consent') || 'null');
       if (savedConsent) {
         document.querySelectorAll('[data-cookie-toggle]').forEach(function (input) {
           var key = input.getAttribute('data-cookie-toggle');
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function () {
           consent[input.getAttribute('data-cookie-toggle')] = input.checked;
         });
         try {
-          localStorage.setItem('frozenholm-cookie-consent', JSON.stringify(consent));
+          localStorage.setItem('nord-cookie-consent', JSON.stringify(consent));
         } catch (e) {}
 
         if (
