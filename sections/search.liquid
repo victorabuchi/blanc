@@ -1,0 +1,79 @@
+<div class="page-banner">
+  <p class="page-banner__title">{{ 'general.search.search' | t }}</p>
+</div>
+
+<div class="search-page">
+  <form action="{{ routes.search_url }}" method="get" role="search" class="search-page__form">
+    <input
+      type="search"
+      name="q"
+      class="search-page__input"
+      value="{{ search.terms | escape }}"
+      placeholder="{{ 'general.search.search' | t }}"
+      autocomplete="off"
+    >
+    <input type="hidden" name="type" value="product,article,page">
+    <button type="submit" class="search-page__submit">{{ 'general.search.search' | t }}</button>
+  </form>
+</div>
+
+{%- if search.performed -%}
+  {%- paginate search.results by 24 -%}
+    {%- if search.results_count == 0 -%}
+      <p class="search-page__empty">{{ 'search.general.no_results' | t: terms: search.terms }}</p>
+    {%- else -%}
+      <p class="search-page__count">
+        {{ 'search.general.results_count' | t: count: search.results_count, terms: search.terms }}
+      </p>
+
+      {%- assign product_count = search.results | where: 'object_type', 'product' | size -%}
+      {%- if product_count > 0 -%}
+        <div class="product-grid">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {%- render 'product-card', product: item -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- assign other_count = search.results_count | minus: product_count -%}
+      {%- if other_count > 0 -%}
+        <div class="search-page__other">
+          {%- for item in search.results -%}
+            {%- unless item.object_type == 'product' -%}
+              <a href="{{ item.url }}" class="search-page__row">
+                <p class="search-page__row-type">
+                  {%- if item.object_type == 'article' -%}
+                    {{ 'search.general.article_type' | t }}
+                  {%- else -%}
+                    {{ 'search.general.page_type' | t }}
+                  {%- endif -%}
+                </p>
+                <p class="search-page__row-title">{{ item.title }}</p>
+                <p class="search-page__row-excerpt">
+                  {%- if item.object_type == 'article' -%}
+                    {{ item.excerpt_or_content | strip_html | truncatewords: 30 }}
+                  {%- else -%}
+                    {{ item.content | strip_html | truncatewords: 30 }}
+                  {%- endif -%}
+                </p>
+              </a>
+            {%- endunless -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if paginate.pages > 1 -%}
+        <div class="pagination">{{ paginate | default_pagination }}</div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endpaginate -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": []
+}
+{% endschema %}

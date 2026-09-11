@@ -1,0 +1,35 @@
+<div class="page-banner">
+  <p class="page-banner__title">{{ 'collections.general.title' | t }}</p>
+</div>
+
+{%- paginate collections by 24 -%}
+  <div class="collection-list">
+    {%- for collection in collections -%}
+      <a href="{{ collection.url }}" class="collection-list__item">
+        <div class="collection-list__image">
+          {%- if collection.featured_image -%}
+            <img
+              src="{{ collection.featured_image | image_url: width: 800 }}"
+              alt="{{ collection.featured_image.alt | default: collection.title | escape }}"
+              loading="lazy"
+              width="800"
+              height="{{ 800 | divided_by: collection.featured_image.aspect_ratio }}"
+            >
+          {%- endif -%}
+        </div>
+        <p class="collection-list__title">{{ collection.title }}</p>
+      </a>
+    {%- endfor -%}
+  </div>
+
+  {%- if paginate.pages > 1 -%}
+    <div class="pagination">{{ paginate | default_pagination }}</div>
+  {%- endif -%}
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Collection list",
+  "settings": []
+}
+{% endschema %}

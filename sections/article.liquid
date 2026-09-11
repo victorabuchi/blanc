@@ -1,0 +1,82 @@
+<div class="page-banner">
+  <p class="page-banner__title">{{ article.title }}</p>
+  <p class="page-banner__subtitle">{{ article.published_at | date: '%B %d, %Y' }}</p>
+</div>
+
+<div class="article">
+  <a href="{{ blog.url }}" class="article__back">{{ 'blogs.article.back_to_blog' | t: blog: blog.title }}</a>
+
+  {%- if article.image -%}
+    <div class="article__image">
+      <img
+        src="{{ article.image | image_url: width: 1200 }}"
+        alt="{{ article.image.alt | default: article.title | escape }}"
+        loading="lazy"
+        width="1200"
+        height="{{ 1200 | divided_by: article.image.aspect_ratio }}"
+      >
+    </div>
+  {%- endif -%}
+
+  <div class="article__content">{{ article.content }}</div>
+
+  {%- if blog.comments_enabled? -%}
+    <div class="article-comments">
+      <p class="article-comments__title">
+        {{ 'blogs.comments.title' | t: count: article.comments_count }}
+      </p>
+
+      {%- paginate article.comments by 20 -%}
+        {%- if article.comments_count > 0 -%}
+          <div class="article-comments__list">
+            {%- for comment in article.comments -%}
+              <div class="article-comments__item">
+                <p class="article-comments__author">{{ comment.author }}</p>
+                <p class="article-comments__date">{{ comment.created_at | date: '%B %d, %Y' }}</p>
+                <div class="article-comments__body">{{ comment.content }}</div>
+              </div>
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            <div class="pagination">{{ paginate | default_pagination }}</div>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endpaginate -%}
+
+      {% form 'new_comment', article, class: 'article-comments__form' %}
+        {%- if form.posted_successfully? -%}
+          <p class="article-comments__success">
+            {%- if blog.moderated? -%}
+              {{ 'blogs.comments.success_moderated' | t }}
+            {%- else -%}
+              {{ 'blogs.comments.success' | t }}
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="article-comments__error">{{ form.errors | default_errors }}</div>
+        {%- endif -%}
+
+        <label class="article-comments__label" for="comment-author">{{ 'blogs.comments.form.name' | t }}</label>
+        <input type="text" id="comment-author" name="comment[author]" class="article-comments__input" value="{{ form.author }}" required>
+
+        <label class="article-comments__label" for="comment-email">{{ 'blogs.comments.form.email' | t }}</label>
+        <input type="email" id="comment-email" name="comment[email]" class="article-comments__input" value="{{ form.email }}" required>
+
+        <label class="article-comments__label" for="comment-body">{{ 'blogs.comments.form.message' | t }}</label>
+        <textarea id="comment-body" name="comment[body]" class="article-comments__textarea" rows="4" required>{{ form.body }}</textarea>
+
+        <button type="submit" class="article-comments__submit">{{ 'blogs.comments.form.submit' | t }}</button>
+      {% endform %}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}

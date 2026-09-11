@@ -3,6 +3,10 @@
     "search": {
       "search": "Search"
     },
+    "password": {
+      "password_field": "Password",
+      "enter_password": "Enter"
+    },
     "cart": {
       "title": "Bag",
       "empty": "Your bag is empty",
@@ -36,11 +40,66 @@
   },
   "collections": {
     "general": {
+      "title": "Collections",
       "no_matches": "No products found in this collection"
     }
   },
   "404": {
     "title": "Page not found",
     "subtext": "The page you're looking for doesn't exist."
+  },
+  "search": {
+    "general": {
+      "no_results": "No results found for “{{ terms }}”.",
+      "results_count": {
+        "one": "{{ count }} result for “{{ terms }}”",
+        "other": "{{ count }} results for “{{ terms }}”"
+      },
+      "article_type": "Article",
+      "page_type": "Page"
+    }
+  },
+  "blogs": {
+    "general": {
+      "no_articles": "No articles yet"
+    },
+    "article": {
+      "back_to_blog": "Back to {{ blog }}"
+    },
+    "comments": {
+      "title": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      },
+      "success": "Thanks — your comment has been posted.",
+      "success_moderated": "Thanks — your comment has been submitted and is awaiting approval.",
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Comment",
+        "submit": "Post comment"
+      }
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send",
+      "success": "Thanks — we've received your message and will reply soon."
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Gift card",
+      "expired": "Expired",
+      "disabled": "Disabled",
+      "initial_value": "Originally {{ value }}",
+      "copy_code": "Copy code",
+      "copied": "Copied",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "expires_on": "Expires {{ date }}"
+    }
   }
 }
