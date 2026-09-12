@@ -685,10 +685,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var productId = container.getAttribute('data-product-id');
     var intent = container.getAttribute('data-intent');
     var limit = container.getAttribute('data-limit') || 4;
-    if (!productId || !intent) return;
+    var sectionId = container.getAttribute('data-section-id');
+    if (!productId || !intent || !sectionId) return;
 
-    var sectionId = intent === 'complementary' ? 'complementary-products' : 'related-products';
-    var url = '/recommendations/products?section_id=' + sectionId +
+    var url = '/recommendations/products?section_id=' + encodeURIComponent(sectionId) +
       '&product_id=' + encodeURIComponent(productId) +
       '&limit=' + encodeURIComponent(limit) +
       '&intent=' + encodeURIComponent(intent);

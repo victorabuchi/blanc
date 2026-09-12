@@ -34,10 +34,16 @@ way of the product.
   `list-collections`, `search`), content pages (`blog`, `article`,
   `page-contact`), system pages (`main-404`, `password`), and
   `custom-liquid` as an app/merchant insertion point. `related-products`
-  and `complementary-products` are nested inside `product.liquid` via
-  `{% section %}` and populated client-side through Shopify's Product
-  Recommendations API.
-- `templates/` — JSON templates, plus the standalone
+  and `complementary-products` are declared as sibling sections after
+  `main` in `templates/product.json` (a section can't be nested inside
+  another section via `{% section %}`) and populated client-side
+  through Shopify's Product Recommendations API.
+- `templates/` — JSON templates. Sections with `blocks` in their schema
+  (`product`, `archive`, `collabs`, `faq`) have their block content
+  declared directly in the template JSON (`blocks`/`block_order`) —
+  a schema's `default`/`presets` blocks only seed a section added
+  through the theme editor, not one a JSON template references
+  directly. Also includes the standalone
   `templates/gift_card.liquid` (issued gift card page; uses
   `{% layout none %}` since it's intentionally outside the normal site
   chrome). Page-type templates follow Shopify's `page.<handle>.json`
