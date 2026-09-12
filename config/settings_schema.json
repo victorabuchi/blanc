@@ -44,7 +44,8 @@
         "type": "color",
         "id": "color_secondary_text",
         "label": "Secondary text",
-        "default": "#888888"
+        "info": "Kept dark enough for WCAG AA text contrast (4.5:1) against the background color.",
+        "default": "#707070"
       },
       {
         "type": "color",
