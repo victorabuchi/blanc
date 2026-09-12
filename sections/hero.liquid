@@ -1,0 +1,77 @@
+<section class="hero{% if section.settings.image != blank %} hero--has-image{% endif %}">
+  {%- if section.settings.image != blank -%}
+    <div class="hero__media">
+      <img
+        src="{{ section.settings.image | image_url: width: 2000 }}"
+        alt="{{ section.settings.image.alt | default: section.settings.headline | escape }}"
+        loading="eager"
+        width="2000"
+        height="{{ 2000 | divided_by: section.settings.image.aspect_ratio }}"
+      >
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.announcement_text != blank -%}
+    <div class="hero__announcement">
+      {%- if section.settings.announcement_link != blank -%}
+        <a href="{{ section.settings.announcement_link }}" class="hero__announcement-link">
+          {{ section.settings.announcement_text }}
+        </a>
+      {%- else -%}
+        <span class="hero__announcement-text">{{ section.settings.announcement_text }}</span>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="hero__inner">
+    <h1 class="hero__title">{{ section.settings.headline | default: shop.name }}</h1>
+    {%- if section.settings.link != blank and section.settings.link_label != blank -%}
+      <a href="{{ section.settings.link }}" class="hero__link">{{ section.settings.link_label }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "info": "Shown in a bar above the image. Leave blank to hide it."
+    },
+    {
+      "type": "url",
+      "id": "announcement_link",
+      "label": "Announcement link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Shop now"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

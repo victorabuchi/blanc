@@ -1,0 +1,70 @@
+<div class="section-heading">
+  <h2 class="section-heading__title">{{ section.settings.title }}</h2>
+</div>
+
+<div class="carousel" data-carousel>
+  <button type="button" class="carousel-arrow carousel-arrow--prev" data-carousel-prev aria-label="Scroll left">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+
+  <div class="carousel__track product-carousel" data-carousel-track>
+    {%- for product in collections[section.settings.collection].products limit: section.settings.products_to_show -%}
+      <div class="product-carousel__item">
+        {%- render 'product-card', product: product -%}
+      </div>
+    {%- else -%}
+      {%- for i in (1..8) -%}
+        <div class="product-carousel__item">
+          <div class="product-card">
+            <div class="product-card__image"></div>
+            <div class="product-card__info">
+              <p class="product-card__name">Product title</p>
+              <p class="product-card__price">&euro;0</p>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+
+  <button type="button" class="carousel-arrow carousel-arrow--next" data-carousel-next aria-label="Scroll right">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"/>
+    </svg>
+  </button>
+</div>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop the collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection"
+    }
+  ]
+}
+{% endschema %}
