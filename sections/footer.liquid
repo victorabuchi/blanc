@@ -238,7 +238,7 @@
 </div>
 
 <div class="contact-widget-backdrop" id="contact-widget-backdrop" hidden></div>
-<div class="contact-widget{% if form.posted_successfully? %} is-success{% endif %}" id="contact-widget" aria-hidden="true">
+<div class="contact-widget" id="contact-widget" aria-hidden="true">
   <div class="contact-widget__header">
     <span class="contact-widget__title">Contact us</span>
     <button type="button" class="contact-widget__close" aria-label="Close contact form">
@@ -252,10 +252,10 @@
   </div>
 
   <div class="contact-widget__body">
-    {%- if form.posted_successfully? -%}
-      <p class="contact-widget__success">Thanks — we've received your message and will reply within 1 business day.</p>
-    {%- else -%}
-      {% form 'contact', class: 'contact-widget__form' %}
+    {% form 'contact', class: 'contact-widget__form' %}
+      {%- if form.posted_successfully? -%}
+        <p class="contact-widget__success">Thanks — we've received your message and will reply within 1 business day.</p>
+      {%- else -%}
         {%- if form.errors -%}
           <div class="contact-widget__error">{{ form.errors | default_errors }}</div>
         {%- endif -%}
@@ -279,8 +279,8 @@
             <button type="submit" class="contact-widget__send">Send</button>
           </div>
         </div>
-      {% endform %}
-    {%- endif -%}
+      {%- endif -%}
+    {% endform %}
   </div>
 </div>
 
