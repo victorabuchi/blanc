@@ -1,6 +1,6 @@
 # Blanc
 
-A Shopify Online Store 2.0 theme built for fashion brands  and
+A Shopify Online Store theme built for fashion brands  and
 label-style stores: limited drops, combos, collabs and an archive of past
 seasons. The visual language borrows from Acne Studios and Balenciaga:
 black-on-white, small uppercase type, blue link-style product titles, and
