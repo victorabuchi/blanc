@@ -8,7 +8,11 @@
 </section>
 
 <div class="section-heading">
-  <p class="section-heading__title">{{ section.settings.grid_title }}</p>
+  {%- if section.settings.headline != blank -%}
+    <h2 class="section-heading__title">{{ section.settings.grid_title }}</h2>
+  {%- else -%}
+    <h1 class="section-heading__title">{{ section.settings.grid_title }}</h1>
+  {%- endif -%}
 </div>
 
 <div class="product-grid">

@@ -63,7 +63,8 @@
         "other": "{{ count }} items"
       },
       "apply": "Apply",
-      "clear_filters": "Clear filters"
+      "clear_filters": "Clear filters",
+      "sort_by": "Sort by"
     }
   },
   "404": {
