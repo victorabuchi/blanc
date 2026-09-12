@@ -657,5 +657,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
     }
+
+    var giftCardToggle = form.querySelector('[data-gift-card-recipient-toggle]');
+    var giftCardFieldsWrapper = form.querySelector('[data-gift-card-recipient-fields]');
+    var giftCardEmail = form.querySelector('[data-gift-card-recipient-email]');
+    var giftCardOffset = form.querySelector('[data-gift-card-offset]');
+
+    if (giftCardToggle && giftCardFieldsWrapper) {
+      var giftCardFields = giftCardFieldsWrapper.querySelectorAll('[data-gift-card-recipient-field]');
+
+      var updateGiftCardRecipient = function () {
+        var checked = giftCardToggle.checked;
+        giftCardFieldsWrapper.hidden = !checked;
+        giftCardFields.forEach(function (field) {
+          field.disabled = !checked;
+        });
+        if (giftCardEmail) giftCardEmail.required = checked;
+        if (giftCardOffset) giftCardOffset.value = new Date().getTimezoneOffset();
+      };
+
+      giftCardToggle.addEventListener('change', updateGiftCardRecipient);
+      updateGiftCardRecipient();
+    }
   });
 });

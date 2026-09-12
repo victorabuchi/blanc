@@ -93,6 +93,62 @@
             </div>
 
           {%- when 'buy_buttons' -%}
+            {%- if product.gift_card? -%}
+              <div class="product__gift-recipient">
+                <label class="product__gift-recipient-toggle">
+                  <input
+                    type="checkbox"
+                    name="properties[__shopify_send_gift_card_to_recipient]"
+                    value="true"
+                    data-gift-card-recipient-toggle
+                  >
+                  {{ 'products.product.gift_card_recipient_toggle' | t }}
+                </label>
+
+                <div class="product__gift-recipient-fields" data-gift-card-recipient-fields hidden>
+                  <label class="product__label" for="gift-card-recipient-email">{{ 'products.product.gift_card_recipient_email' | t }}</label>
+                  <input
+                    type="email"
+                    id="gift-card-recipient-email"
+                    name="properties[Recipient email]"
+                    class="product__gift-recipient-input"
+                    data-gift-card-recipient-field
+                    data-gift-card-recipient-email
+                  >
+
+                  <label class="product__label" for="gift-card-recipient-name">{{ 'products.product.gift_card_recipient_name' | t }}</label>
+                  <input
+                    type="text"
+                    id="gift-card-recipient-name"
+                    name="properties[Recipient name]"
+                    class="product__gift-recipient-input"
+                    maxlength="255"
+                    data-gift-card-recipient-field
+                  >
+
+                  <label class="product__label" for="gift-card-recipient-message">{{ 'products.product.gift_card_recipient_message' | t }}</label>
+                  <textarea
+                    id="gift-card-recipient-message"
+                    name="properties[Message]"
+                    class="product__gift-recipient-textarea"
+                    rows="3"
+                    maxlength="200"
+                    data-gift-card-recipient-field
+                  ></textarea>
+
+                  <label class="product__label" for="gift-card-recipient-send-on">{{ 'products.product.gift_card_recipient_send_on' | t }}</label>
+                  <input
+                    type="date"
+                    id="gift-card-recipient-send-on"
+                    name="properties[Send on]"
+                    class="product__gift-recipient-input"
+                    data-gift-card-recipient-field
+                  >
+
+                  <input type="hidden" name="properties[__shopify_offset]" data-gift-card-offset>
+                </div>
+              </div>
+            {%- endif -%}
             <button type="submit" class="product__submit" data-add-to-cart {% unless product.available %}disabled{% endunless %} {{ block.shopify_attributes }}>
               <span data-add-to-cart-text>
                 {%- if product.available -%}
