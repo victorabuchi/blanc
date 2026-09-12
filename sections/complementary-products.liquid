@@ -1,0 +1,23 @@
+<div
+  class="product-recommendations"
+  data-product-recommendations
+  data-intent="complementary"
+  data-product-id="{{ product.id }}"
+  data-limit="4"
+>
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <p class="section-heading__title">{{ 'products.product.complementary_products' | t }}</p>
+    <div class="product-grid">
+      {%- for product in recommendations.products -%}
+        {%- render 'product-card', product: product -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Complementary products",
+  "settings": []
+}
+{% endschema %}

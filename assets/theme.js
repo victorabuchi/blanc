@@ -680,4 +680,31 @@ document.addEventListener('DOMContentLoaded', function () {
       updateGiftCardRecipient();
     }
   });
+
+  document.querySelectorAll('[data-product-recommendations]').forEach(function (container) {
+    var productId = container.getAttribute('data-product-id');
+    var intent = container.getAttribute('data-intent');
+    var limit = container.getAttribute('data-limit') || 4;
+    if (!productId || !intent) return;
+
+    var sectionId = intent === 'complementary' ? 'complementary-products' : 'related-products';
+    var url = '/recommendations/products?section_id=' + sectionId +
+      '&product_id=' + encodeURIComponent(productId) +
+      '&limit=' + encodeURIComponent(limit) +
+      '&intent=' + encodeURIComponent(intent);
+
+    fetch(url)
+      .then(function (response) {
+        return response.ok ? response.text() : '';
+      })
+      .then(function (html) {
+        if (!html) return;
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var updated = doc.querySelector('[data-product-recommendations]');
+        if (updated && updated.innerHTML.trim()) {
+          container.innerHTML = updated.innerHTML;
+        }
+      })
+      .catch(function () {});
+  });
 });
