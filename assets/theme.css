@@ -1169,6 +1169,20 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 
+.product-recommendations {
+  margin-top: 48px;
+}
+
+.product-recommendations:empty {
+  margin-top: 0;
+}
+
+.product-recommendations > .section-heading__title {
+  display: block;
+  padding: 0 32px 24px;
+  text-align: center;
+}
+
 .section-heading__title {
   font-family: var(--font-heading-family);
   font-size: 13px;

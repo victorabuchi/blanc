@@ -49,7 +49,9 @@
       "gift_card_recipient_email": "Recipient email",
       "gift_card_recipient_name": "Recipient name (optional)",
       "gift_card_recipient_message": "Message (optional)",
-      "gift_card_recipient_send_on": "Send on (optional)"
+      "gift_card_recipient_send_on": "Send on (optional)",
+      "related_products": "You may also like",
+      "complementary_products": "Frequently bought together"
     }
   },
   "collections": {
