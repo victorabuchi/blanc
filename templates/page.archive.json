@@ -1,8 +1,110 @@
 {
   "sections": {
     "main": {
-      "type": "archive"
+      "type": "archive",
+      "blocks": {
+        "block-1": {
+          "type": "entry",
+          "settings": {
+            "date": "15.11.24",
+            "name": "DROP 000 — AUTUMN 2024"
+          }
+        },
+        "block-2": {
+          "type": "entry",
+          "settings": {
+            "date": "15.11.24",
+            "name": "FH X NORTH"
+          }
+        },
+        "block-3": {
+          "type": "entry",
+          "settings": {
+            "date": "15.11.24",
+            "name": "HELSINKI STREETS"
+          }
+        },
+        "block-4": {
+          "type": "entry",
+          "settings": {
+            "date": "01.09.24",
+            "name": "DROP 00X — SUMMER 2024"
+          }
+        },
+        "block-5": {
+          "type": "entry",
+          "settings": {
+            "date": "01.09.24",
+            "name": "FH X ICE"
+          }
+        },
+        "block-6": {
+          "type": "entry",
+          "settings": {
+            "date": "01.09.24",
+            "name": "COLD CITY CAMPAIGN"
+          }
+        },
+        "block-7": {
+          "type": "entry",
+          "settings": {
+            "date": "14.06.24",
+            "name": "PROTO DROP"
+          }
+        },
+        "block-8": {
+          "type": "entry",
+          "settings": {
+            "date": "14.06.24",
+            "name": "FH X ARCTIC"
+          }
+        },
+        "block-9": {
+          "type": "entry",
+          "settings": {
+            "date": "14.06.24",
+            "name": "FROZEN SERIES"
+          }
+        },
+        "block-10": {
+          "type": "entry",
+          "settings": {
+            "date": "01.03.24",
+            "name": "ORIGIN DROP"
+          }
+        },
+        "block-11": {
+          "type": "entry",
+          "settings": {
+            "date": "01.03.24",
+            "name": "FIRST EVER COLLAB"
+          }
+        },
+        "block-12": {
+          "type": "entry",
+          "settings": {
+            "date": "01.03.24",
+            "name": "WHERE IT STARTED"
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "block-2",
+        "block-3",
+        "block-4",
+        "block-5",
+        "block-6",
+        "block-7",
+        "block-8",
+        "block-9",
+        "block-10",
+        "block-11",
+        "block-12"
+      ]
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

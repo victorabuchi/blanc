@@ -1,8 +1,46 @@
 {
   "sections": {
     "main": {
-      "type": "faq"
+      "type": "faq",
+      "blocks": {
+        "block-1": {
+          "type": "question",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Finland and EU orders ship within 5-10 working days. International orders take 7-15 working days, unless a pre-order ship date is given.</p>"
+          }
+        },
+        "block-2": {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We have a 14-day return policy. Items must be unworn, unused, with tags attached, and in original packaging. Email support@example.com with your order number to start a return.</p>"
+          }
+        },
+        "block-3": {
+          "type": "question",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p>You'll receive a shipping confirmation email with a tracking link once your order ships. You can also check your order status from your account.</p>"
+          }
+        },
+        "block-4": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>Yes. It is the customer's responsibility to pay any import taxes or duties charged by their country.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "block-2",
+        "block-3",
+        "block-4"
+      ]
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

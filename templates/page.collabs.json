@@ -1,8 +1,21 @@
 {
   "sections": {
     "main": {
-      "type": "collabs"
+      "type": "collabs",
+      "blocks": {
+        "block-1": {
+          "type": "group",
+          "settings": {
+            "label": "FH X NORTH COLLECTION"
+          }
+        }
+      },
+      "block_order": [
+        "block-1"
+      ]
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
