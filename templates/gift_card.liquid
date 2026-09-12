@@ -214,9 +214,9 @@
     {%- endif -%}
   </div>
 
-  {{ 'qrcode.min.js' | asset_url | script_tag }}
+  <script src="{{ 'qrcode.min.js' | asset_url }}" defer></script>
   <script>
-    (function () {
+    document.addEventListener('DOMContentLoaded', function () {
       var copyBtn = document.getElementById('gift-card-copy');
       if (copyBtn) {
         copyBtn.addEventListener('click', function () {
@@ -264,7 +264,7 @@
           }
         }
       }
-    })();
+    });
   </script>
 </body>
 </html>
