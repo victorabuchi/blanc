@@ -26,7 +26,7 @@
         {%- case block.type -%}
 
           {%- when 'title' -%}
-            <p class="product__name" {{ block.shopify_attributes }}>{{ product.title }}</p>
+            <h1 class="product__name" {{ block.shopify_attributes }}>{{ product.title }}</h1>
 
           {%- when 'vendor' -%}
             {%- if product.vendor != blank -%}
