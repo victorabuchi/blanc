@@ -49,6 +49,7 @@
                 {{ product.selected_or_first_available_variant.unit_price | money }}/{% if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 %}{{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}{% endif %}{{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
               {%- endif -%}
             </p>
+            <div class="product__installments">{{ form | payment_terms }}</div>
 
           {%- when 'piece_number' -%}
             <p class="product__label" {{ block.shopify_attributes }}>{{ 'products.product.piece_number' | t }}</p>
@@ -158,6 +159,9 @@
                 {%- endif -%}
               </span>
             </button>
+            {%- unless product.gift_card? -%}
+              <div class="product__payment-button">{{ form | payment_button }}</div>
+            {%- endunless -%}
 
           {%- when 'description' -%}
             <hr class="product__divider">
