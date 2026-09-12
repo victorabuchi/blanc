@@ -44,7 +44,12 @@
       "piece_number": "Piece number",
       "size": "Size",
       "description": "Description",
-      "quantity": "Quantity"
+      "quantity": "Quantity",
+      "gift_card_recipient_toggle": "Send as a gift",
+      "gift_card_recipient_email": "Recipient email",
+      "gift_card_recipient_name": "Recipient name (optional)",
+      "gift_card_recipient_message": "Message (optional)",
+      "gift_card_recipient_send_on": "Send on (optional)"
     }
   },
   "collections": {
