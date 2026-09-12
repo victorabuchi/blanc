@@ -707,4 +707,32 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .catch(function () {});
   });
+
+  document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
+    var track = carousel.querySelector('[data-carousel-track]');
+    var prevBtn = carousel.querySelector('[data-carousel-prev]');
+    var nextBtn = carousel.querySelector('[data-carousel-next]');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    function updateArrows() {
+      var maxScroll = track.scrollWidth - track.clientWidth;
+      prevBtn.disabled = track.scrollLeft <= 0;
+      nextBtn.disabled = track.scrollLeft >= maxScroll - 1;
+    }
+
+    function scrollByAmount(direction) {
+      var amount = track.clientWidth * 0.8 * direction;
+      track.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+
+    prevBtn.addEventListener('click', function () {
+      scrollByAmount(-1);
+    });
+    nextBtn.addEventListener('click', function () {
+      scrollByAmount(1);
+    });
+    track.addEventListener('scroll', updateArrows);
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+  });
 });

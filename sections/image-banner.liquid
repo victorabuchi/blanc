@@ -1,0 +1,60 @@
+{%- capture banner_content -%}
+  {%- if section.settings.image != blank -%}
+    <img
+      src="{{ section.settings.image | image_url: width: 2000 }}"
+      alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+      loading="lazy"
+      width="2000"
+      height="{{ 2000 | divided_by: section.settings.image.aspect_ratio }}"
+    >
+  {%- endif -%}
+
+  {%- if section.settings.heading != blank -%}
+    <p class="image-banner__heading">
+      {{ section.settings.heading }}
+      {%- if section.settings.link != blank %} <span class="image-banner__arrow">&gt;</span> {{ section.settings.link_label }}{% endif -%}
+    </p>
+  {%- endif -%}
+{%- endcapture -%}
+
+<section class="image-banner">
+  {%- if section.settings.link != blank -%}
+    <a href="{{ section.settings.link }}" class="image-banner__media">{{ banner_content }}</a>
+  {%- else -%}
+    <div class="image-banner__media">{{ banner_content }}</div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Image banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Shop"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image banner"
+    }
+  ]
+}
+{% endschema %}

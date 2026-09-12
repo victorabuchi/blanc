@@ -1,0 +1,116 @@
+<div class="news">
+  <div class="news__text">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="news__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <div class="news__body">{{ section.settings.text }}</div>
+    {%- endif -%}
+  </div>
+
+  <div class="carousel news__carousel" data-carousel>
+    <button type="button" class="carousel-arrow carousel-arrow--prev" data-carousel-prev aria-label="Scroll left">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+
+    <div class="carousel__track news__track" data-carousel-track>
+      {%- for block in section.blocks -%}
+        <div class="news__item" {{ block.shopify_attributes }}>
+          {%- case block.type -%}
+            {%- when 'image' -%}
+              {%- if block.settings.image != blank -%}
+                <img
+                  src="{{ block.settings.image | image_url: width: 1000 }}"
+                  alt="{{ block.settings.image.alt | default: block.settings.caption | escape }}"
+                  loading="lazy"
+                  width="1000"
+                  height="{{ 1000 | divided_by: block.settings.image.aspect_ratio }}"
+                >
+              {%- endif -%}
+            {%- when 'video' -%}
+              {%- if block.settings.video != blank -%}
+                {{ block.settings.video | video_tag: image_size: '1000x', autoplay: true, loop: true, muted: true, controls: false }}
+              {%- endif -%}
+          {%- endcase -%}
+          {%- if block.settings.caption != blank -%}
+            <p class="news__item-caption">{{ block.settings.caption }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <button type="button" class="carousel-arrow carousel-arrow--next" data-carousel-next aria-label="Scroll right">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "News",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "News"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "News",
+      "blocks": [
+        { "type": "video" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}
