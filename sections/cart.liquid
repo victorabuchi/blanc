@@ -79,12 +79,19 @@
 
       <div class="cart-summary__row">
         <span>{{ 'general.cart.subtotal' | t }}</span>
-        <span>{{ cart.total_price | money }}</span>
+        <span data-cart-subtotal>{{ cart.total_price | money }}</span>
       </div>
       <p class="cart-summary__note">{{ 'general.cart.taxes_note' | t }}</p>
+      <div class="cart-summary__installments">{{ form | payment_terms }}</div>
 
       <button type="submit" name="update" class="cart-summary__update">{{ 'general.cart.update' | t }}</button>
       <button type="submit" name="checkout" class="cart-summary__checkout">{{ 'general.cart.checkout' | t }}</button>
+
+      {%- if additional_checkout_buttons -%}
+        <div class="cart-summary__additional-checkout additional-checkout-buttons--vertical">
+          {{ content_for_additional_checkout_buttons }}
+        </div>
+      {%- endif -%}
     </div>
   {% endform %}
 {%- endif -%}

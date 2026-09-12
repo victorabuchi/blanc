@@ -1491,6 +1491,16 @@ h1, h2, h3, h4 {
   outline: none;
 }
 
+.product__installments {
+  margin-bottom: 24px;
+  font-size: 11px;
+  color: var(--color-secondary-text);
+}
+
+.product__payment-button {
+  margin-top: 12px;
+}
+
 .product__submit {
   display: block;
   width: 100%;
@@ -1961,6 +1971,16 @@ h1, h2, h3, h4 {
   font-size: 11px;
   color: var(--color-secondary-text);
   margin-top: 8px;
+}
+
+.cart-summary__installments {
+  font-size: 11px;
+  color: var(--color-secondary-text);
+  margin: 12px 0;
+}
+
+.cart-summary__additional-checkout {
+  margin-top: 12px;
 }
 
 .cart-summary__update {
