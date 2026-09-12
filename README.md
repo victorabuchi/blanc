@@ -1,6 +1,6 @@
 # Blanc
 
-A Shopify Online Store 2.0 theme built for minimalist streetwear and
+A Shopify Online Store 2.0 theme built for fashion brands  and
 label-style stores: limited drops, combos, collabs and an archive of past
 seasons. The visual language borrows from Acne Studios and Balenciaga:
 black-on-white, small uppercase type, blue link-style product titles, and
@@ -8,8 +8,7 @@ edge-to-edge product grids.
 
 ## About
 
-Blanc is built around small, numbered drops rather than a continuous
-catalogue. The site is structured around that: a **New** page for the
+The site is structured around that: a **New** page for the
 current drop, **Combos** for curated outfits, **Collabs** for partner
 releases, and an **Archive** documenting past drops and the brand's
 story. Everything else (cart, search, help) is built to stay out of the
