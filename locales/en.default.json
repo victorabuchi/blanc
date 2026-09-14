@@ -1,6 +1,10 @@
 {
   "general": {
     "shop": "Shop",
+    "news": {
+      "image_placeholder": "Add an image",
+      "video_placeholder": "Add a video"
+    },
     "search": {
       "search": "Search",
       "suggestions": "Suggestions",
