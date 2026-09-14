@@ -32,8 +32,8 @@
       "type": "image-banner",
       "settings": {
         "image": "shopify://shop_images/denim-d.webp",
-        "heading": "",
-        "link": "",
+        "heading": "DENIM",
+        "link": "shopify://products/re-edition-raw-jeans-1996m",
         "link_label": "Shop"
       }
     },
@@ -56,8 +56,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/shop-man.webp",
-            "label": "",
-            "link": ""
+            "label": "MEN'S NEW ARRIVALS",
+            "link": "shopify://products/re-edition-worn-jeans-1996m"
           }
         }
       },
