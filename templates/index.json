@@ -47,29 +47,33 @@
         "cat-1": {
           "type": "category",
           "settings": {
-            "label": "",
-            "link": ""
+            "image": "shopify://shop_images/01.webp",
+            "label": "WOMEN'S JEANS",
+            "link": "shopify://products/re-edition-worn-jeans"
           }
         },
         "cat-2": {
           "type": "category",
           "settings": {
-            "label": "",
-            "link": ""
+            "image": "shopify://shop_images/C10330-A_M_Y.webp",
+            "label": "BAGS",
+            "link": "shopify://products/camero-camera-suede-shoulder-bag"
           }
         },
         "cat-3": {
           "type": "category",
           "settings": {
-            "label": "",
-            "link": ""
+            "image": "shopify://shop_images/B70173-900_UNISEX-WOMAN_A.webp",
+            "label": "WOMEN'S JACKET",
+            "link": "shopify://products/leather-biker-jacket"
           }
         },
         "cat-4": {
           "type": "category",
           "settings": {
-            "label": "",
-            "link": ""
+            "image": "shopify://shop_images/04.webp",
+            "label": "MEN'S JEANS",
+            "link": "shopify://products/re-edition-worn-jeans-1996m"
           }
         }
       },
