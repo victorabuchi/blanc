@@ -14,7 +14,11 @@
         {%- if block.settings.label != blank -%}
           <p class="two-column-banner__label">
             {{ block.settings.label }}
-            {%- if block.settings.link != blank %} <span class="two-column-banner__arrow">&gt;</span> {{ 'general.shop' | t }}{% endif -%}
+            {%- if block.settings.link != blank -%}
+              <span class="two-column-banner__shop">
+                <span class="two-column-banner__arrow">&gt;</span> {{ 'general.shop' | t }}
+              </span>
+            {%- endif -%}
           </p>
         {%- endif -%}
       {%- endcapture -%}
