@@ -89,30 +89,35 @@
         "media-1": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/hero_video.mp4",
             "caption": ""
           }
         },
         "media-2": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/palaisroyal.webp",
             "caption": ""
           }
         },
         "media-3": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/ap.webp",
             "caption": ""
           }
         },
         "media-4": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/malle.webp",
             "caption": ""
           }
         },
         "media-5": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/runway.webp",
             "caption": ""
           }
         },
