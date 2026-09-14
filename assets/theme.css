@@ -3222,12 +3222,15 @@ h1, h2, h3, h4 {
 .two-column-banner__media {
   position: relative;
   display: block;
-  min-height: 320px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
   background: var(--color-secondary-background);
 }
 
 .two-column-banner__media img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
