@@ -24,7 +24,9 @@
   {%- endif -%}
 
   <div class="hero__inner">
-    <h1 class="hero__title">{{ section.settings.headline | default: shop.name }}</h1>
+    <h1 class="hero__title{% if section.settings.headline == blank %} visually-hidden{% endif %}">
+      {{ section.settings.headline | default: shop.name }}
+    </h1>
     {%- if section.settings.link != blank and section.settings.link_label != blank -%}
       <a href="{{ section.settings.link }}" class="hero__link">{{ section.settings.link_label }}</a>
     {%- endif -%}
