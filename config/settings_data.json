@@ -1,7 +1,7 @@
 {
-  "current": "Default",
+  "current": "Blanc",
   "presets": {
-    "Default": {
+    "Blanc": {
       "color_background": "#ffffff",
       "color_text": "#1a1a1a",
       "color_accent": "#0000ee",
