@@ -41,6 +41,33 @@
       "type": "two-column-banner",
       "settings": {}
     },
+    "two_column_banner_4Y4NNy": {
+      "type": "two-column-banner",
+      "blocks": {
+        "column_AJjQqX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shop-woman.webp",
+            "label": "WOMEN'S NEW ARRIVALS",
+            "link": "shopify://products/re-edition-raw-jeans-2009f"
+          }
+        },
+        "column_enUXey": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shop-man.webp",
+            "label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_AJjQqX",
+        "column_enUXey"
+      ],
+      "name": "Two-column banner",
+      "settings": {}
+    },
     "category-grid": {
       "type": "category-grid",
       "blocks": {
@@ -144,6 +171,7 @@
     "featured-collection",
     "image-banner",
     "two-column-banner",
+    "two_column_banner_4Y4NNy",
     "category-grid",
     "news"
   ]
