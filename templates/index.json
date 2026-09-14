@@ -24,7 +24,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "Shop the collection",
-        "collection": "",
+        "collection": "re-edition-jeans",
         "products_to_show": 8
       }
     },
