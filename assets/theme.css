@@ -3178,6 +3178,8 @@ h1, h2, h3, h4 {
 .image-banner__media {
   position: relative;
   display: block;
+  min-height: 320px;
+  background: var(--color-secondary-background);
 }
 
 .image-banner__media img {
@@ -3204,6 +3206,8 @@ h1, h2, h3, h4 {
 .two-column-banner__media {
   position: relative;
   display: block;
+  min-height: 320px;
+  background: var(--color-secondary-background);
 }
 
 .two-column-banner__media img {
@@ -3295,6 +3299,20 @@ h1, h2, h3, h4 {
 .news__item video {
   width: 100%;
   display: block;
+}
+
+.news__item-placeholder {
+  aspect-ratio: 3 / 4;
+  background: var(--color-secondary-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary-text);
 }
 
 .news__item-caption {
