@@ -124,12 +124,6 @@
             "image": "shopify://shop_images/runway.webp",
             "caption": ""
           }
-        },
-        "media-6": {
-          "type": "image",
-          "settings": {
-            "caption": ""
-          }
         }
       },
       "block_order": [
@@ -137,8 +131,7 @@
         "media-2",
         "media-3",
         "media-4",
-        "media-5",
-        "media-6"
+        "media-5"
       ],
       "settings": {
         "heading": "News",
