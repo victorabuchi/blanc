@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -5,6 +14,7 @@
       "settings": {
         "announcement_text": "",
         "announcement_link": "",
+        "image": "shopify://shop_images/hero.webp",
         "headline": "",
         "link": "",
         "link_label": "Shop now"
@@ -29,39 +39,121 @@
     "two-column-banner": {
       "type": "two-column-banner",
       "blocks": {
-        "col-1": { "type": "column", "settings": { "label": "" } },
-        "col-2": { "type": "column", "settings": { "label": "" } }
+        "col-1": {
+          "type": "column",
+          "settings": {
+            "label": "",
+            "link": ""
+          }
+        },
+        "col-2": {
+          "type": "column",
+          "settings": {
+            "label": "",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["col-1", "col-2"]
+      "block_order": [
+        "col-1",
+        "col-2"
+      ],
+      "settings": {}
     },
     "category-grid": {
       "type": "category-grid",
+      "blocks": {
+        "cat-1": {
+          "type": "category",
+          "settings": {
+            "label": "",
+            "link": ""
+          }
+        },
+        "cat-2": {
+          "type": "category",
+          "settings": {
+            "label": "",
+            "link": ""
+          }
+        },
+        "cat-3": {
+          "type": "category",
+          "settings": {
+            "label": "",
+            "link": ""
+          }
+        },
+        "cat-4": {
+          "type": "category",
+          "settings": {
+            "label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "cat-1",
+        "cat-2",
+        "cat-3",
+        "cat-4"
+      ],
       "settings": {
         "title": "Discover more"
-      },
-      "blocks": {
-        "cat-1": { "type": "category", "settings": { "label": "" } },
-        "cat-2": { "type": "category", "settings": { "label": "" } },
-        "cat-3": { "type": "category", "settings": { "label": "" } },
-        "cat-4": { "type": "category", "settings": { "label": "" } }
-      },
-      "block_order": ["cat-1", "cat-2", "cat-3", "cat-4"]
+      }
     },
     "news": {
       "type": "news",
+      "blocks": {
+        "media-1": {
+          "type": "video",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "media-2": {
+          "type": "image",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "media-3": {
+          "type": "image",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "media-4": {
+          "type": "image",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "media-5": {
+          "type": "image",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "media-6": {
+          "type": "image",
+          "settings": {
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "media-1",
+        "media-2",
+        "media-3",
+        "media-4",
+        "media-5",
+        "media-6"
+      ],
       "settings": {
         "heading": "News",
         "text": ""
-      },
-      "blocks": {
-        "media-1": { "type": "video", "settings": { "caption": "" } },
-        "media-2": { "type": "image", "settings": { "caption": "" } },
-        "media-3": { "type": "image", "settings": { "caption": "" } },
-        "media-4": { "type": "image", "settings": { "caption": "" } },
-        "media-5": { "type": "image", "settings": { "caption": "" } },
-        "media-6": { "type": "image", "settings": { "caption": "" } }
-      },
-      "block_order": ["media-1", "media-2", "media-3", "media-4", "media-5", "media-6"]
+      }
     }
   },
   "order": [
