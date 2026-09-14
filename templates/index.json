@@ -31,6 +31,7 @@
     "image-banner": {
       "type": "image-banner",
       "settings": {
+        "image": "shopify://shop_images/denim-d.webp",
         "heading": "",
         "link": "",
         "link_label": "Shop"
@@ -38,26 +39,6 @@
     },
     "two-column-banner": {
       "type": "two-column-banner",
-      "blocks": {
-        "col-1": {
-          "type": "column",
-          "settings": {
-            "label": "",
-            "link": ""
-          }
-        },
-        "col-2": {
-          "type": "column",
-          "settings": {
-            "label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "col-1",
-        "col-2"
-      ],
       "settings": {}
     },
     "category-grid": {
