@@ -2,8 +2,7 @@
 
 ## 1.0.0 — Initial release
 
-A Shopify Online Store 2.0 theme for minimalist streetwear and label-style
-stores built around limited, numbered drops.
+A Shopify Online Store 2.0 theme for fashion and label-style stores.
 
 **Storefront**
 
